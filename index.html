@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eranalum — AI Writing</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{min-height:100%;font-family:'Geist',sans-serif;overflow-x:hidden;}
+.page{display:none!important;}
+.page.active{display:block!important;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes dvIn{from{opacity:0;transform:translateX(25px);}to{opacity:1;transform:translateX(0);}}
+@keyframes fcIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ══════════════ PAGE 1 — ERANALUM (WHITE) ══════════════ */
+#p1{background:#fff;color:#111;}
+#p1 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.07);}
+.p1-logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.p1-logo-m{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;font-style:italic;color:#111;line-height:1;}
+.p1-logo-name{font-size:16px;color:#111;}
+.p1-logo-name span{color:#5b5bf6;}
+.p1-nav-c{display:flex;gap:2rem;}
+.p1-nav-link{font-size:14px;color:#555;cursor:pointer;transition:color 0.15s;}
+.p1-nav-link:hover{color:#111;}
+.p1-nav-r{display:flex;gap:10px;align-items:center;}
+.p1-contact{font-size:14px;color:#555;border:1px solid #ddd;padding:8px 18px;border-radius:8px;cursor:pointer;background:transparent;font-family:'Geist',sans-serif;}
+.p1-contact:hover{border-color:#aaa;}
+.p1-cta{font-size:14px;font-weight:500;color:#fff;background:#111;border:none;padding:9px 22px;border-radius:10px;cursor:pointer;font-family:'Geist',sans-serif;display:flex;align-items:center;gap:6px;}
+.p1-cta:hover{background:#333;}
+.p1-hero{min-height:100vh;display:flex;align-items:center;padding:120px 2.5rem 80px;max-width:1100px;margin:0 auto;}
+.p1-h1{font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,7vw,6rem);font-weight:400;line-height:1.05;letter-spacing:-1px;color:#111;margin-bottom:1.5rem;}
+.p1-h1 em{font-style:italic;display:block;}
+.p1-p{font-size:17px;color:#444;line-height:1.7;max-width:560px;margin-bottom:2.5rem;font-weight:300;}
+.p1-p strong{color:#111;font-weight:600;}
+.p1-btns{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.btn-blk{font-size:15px;font-weight:500;color:#fff;background:#111;border:none;padding:13px 28px;border-radius:12px;cursor:pointer;font-family:'Geist',sans-serif;display:flex;align-items:center;gap:7px;transition:all 0.18s;}
+.btn-blk:hover{background:#333;transform:translateY(-1px);}
+.ghost{font-size:14px;color:#777;cursor:pointer;transition:color 0.15s;}
+.ghost:hover{color:#111;}
+.divider{width:100%;height:1px;background:#e8e8e8;}
+.p1-section{padding:5rem 2.5rem;max-width:1100px;margin:0 auto;}
+.p1-tag{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:#999;margin-bottom:1.5rem;}
+.p1-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;}
+.p1-step-n{font-size:13px;font-weight:600;color:#111;margin-bottom:0.5rem;}
+.p1-step-d{font-size:14px;color:#666;line-height:1.6;font-weight:300;}
+.p1-cta-sec{padding:5rem 2.5rem;text-align:center;background:#fafafa;}
+.p1-cta-sec h2{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;font-style:italic;color:#111;margin-bottom:1rem;}
+.p1-cta-sec p{font-size:15px;color:#666;margin-bottom:2rem;font-weight:300;}
+#p1 footer{padding:2rem 2.5rem;border-top:1px solid #e8e8e8;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.p1-foot-logo{font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;color:#666;}
+.p1-foot-links{display:flex;gap:1.5rem;}
+.p1-foot-link{font-size:13px;color:#999;cursor:pointer;transition:color 0.15s;}
+.p1-foot-link:hover{color:#333;}
+.p1-copy{font-size:12px;color:#bbb;}
+
+/* ══════════════ PAGE 2 — ERANATIS HERO ══════════════ */
+#p2{background:#111;}
+#p2 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;padding:0 2.5rem;background:transparent;}
+.p2-navlogo{font-family:'Instrument Serif',serif;font-size:20px;color:#111;cursor:pointer;letter-spacing:-0.3px;}
+.p2-navlinks{display:flex;gap:2.5rem;margin-left:3rem;}
+.p2-navlink{font-size:14px;color:#555;cursor:pointer;transition:color 0.15s;}
+.p2-navlink:hover{color:#111;}
+.hero-wrap{position:relative;width:100%;height:100vh;overflow:hidden;background:linear-gradient(180deg,#ccc9c0 0%,#b0aca4 18%,#908c84 35%,#706c64 50%,#504840 65%,#302820 80%,#181008 92%,#0c0804 100%);}
+#davinci{position:absolute;right:0;bottom:0;height:90%;width:auto;object-fit:contain;pointer-events:none;filter:grayscale(10%) contrast(1.05);mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,0.4) 10%,rgba(0,0,0,0.9) 30%,#000 55%),linear-gradient(to top,transparent 0%,rgba(0,0,0,0.6) 8%,#000 18%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,0.4) 10%,rgba(0,0,0,0.9) 30%,#000 55%),linear-gradient(to top,transparent 0%,rgba(0,0,0,0.6) 8%,#000 18%);mask-composite:intersect;-webkit-mask-composite:source-in;animation:dvIn 1s 0.3s ease both;opacity:0;animation-fill-mode:both;}
+.fc{position:absolute;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.15);overflow:hidden;animation:fcIn 0.8s ease both;opacity:0;animation-fill-mode:both;}
+.fc-head{display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.06);}
+.fc-ico{width:20px;height:20px;border-radius:5px;background:#111;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:600;}
+.fc-name{font-size:11px;font-weight:500;color:#111;}
+.fc-body{padding:9px 12px;}
+.fc-badge{display:inline-block;font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.fc-quote{font-family:'Instrument Serif',serif;font-size:11.5px;font-style:italic;color:#666;line-height:1.5;}
+.hero-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;padding:0 2rem;}
+.hero-h1{font-family:'Instrument Serif',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:400;color:#1a1814;letter-spacing:-0.5px;margin-bottom:0.5rem;text-align:center;animation:fadeUp 0.7s ease both;}
+.hero-sub{font-size:15px;color:#5a5650;font-weight:300;letter-spacing:0.06em;margin-bottom:3rem;text-align:center;animation:fadeUp 0.7s 0.1s ease both;opacity:0;animation-fill-mode:both;}
+.sbar-outer{width:100%;max-width:560px;animation:fadeUp 0.7s 0.18s ease both;opacity:0;animation-fill-mode:both;}
+.sbar{background:rgba(22,16,10,0.88);border-radius:18px;padding:20px 22px 16px;box-shadow:0 24px 80px rgba(0,0,0,0.4);backdrop-filter:blur(12px);}
+.sbar-ta{width:100%;background:transparent;border:none;outline:none;color:rgba(255,255,255,0.82);font-family:'Geist',sans-serif;font-size:16px;font-weight:300;line-height:1.55;resize:none;min-height:44px;max-height:120px;}
+.sbar-ta::placeholder{color:rgba(255,255,255,0.28);}
+.sbar-foot{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:10px;}
+.sbar-attach{width:32px;height:32px;color:rgba(255,255,255,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color 0.18s;}
+.sbar-attach:hover{color:rgba(255,255,255,0.65);}
+.sbar-send{width:36px;height:36px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.85);transition:all 0.2s;}
+.sbar-send:hover{background:rgba(255,255,255,0.28);transform:scale(1.1);}
+.trans-overlay{position:fixed;inset:0;z-index:9999;background:#1a1008;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;transition:opacity 0.55s ease;}
+.trans-txt{opacity:0;transform:translateY(16px);transition:all 0.4s 0.35s ease;font-family:'Instrument Serif',serif;font-size:2rem;font-style:italic;color:rgba(200,185,160,0.8);}
+.p2-footer{background:#120a06;padding:3.5rem 3rem 0;}
+.p2-foot-in{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.05);}
+.p2-foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;}
+.p2-foot-brand-logo{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;color:#fff;}
+.p2-foot-brand-name{font-size:15px;color:#aaa;}
+.p2-foot-brand-name span{color:#a599ff;}
+.p2-foot-desc{font-size:14px;color:#4a4440;line-height:1.7;font-weight:300;max-width:360px;margin-bottom:2rem;}
+.p2-foot-email a{color:#a599ff;text-decoration:none;margin-left:6px;font-size:14px;}
+.p2-foot-email{font-size:14px;color:#4a4440;}
+.p2-foot-right{text-align:right;}
+.p2-fb-title{font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#c8c0b4;margin-bottom:1rem;}
+.p2-fb-desc{font-size:14px;color:#4a4440;line-height:1.7;margin-bottom:2rem;}
+.p2-connect{display:inline-flex;align-items:center;gap:8px;background:#3a2218;color:#c8c0b4;padding:13px 26px;border-radius:50px;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,0.07);transition:all 0.2s;cursor:pointer;}
+.p2-connect:hover{background:#4a2e22;transform:translateY(-2px);}
+.p2-foot-bot{max-width:1100px;margin:0 auto;padding:1.5rem 0;text-align:center;font-size:12px;color:#2e2420;}
+
+/* ══════════════ LOGIN MODAL ══════════════ */
+.modal-bg{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;}
+.modal-bg.show{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:2.5rem;width:100%;max-width:420px;margin:1rem;box-shadow:0 24px 80px rgba(0,0,0,0.25);animation:fadeUp 0.3s ease both;}
+.modal-logo{font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;color:#111;text-align:center;margin-bottom:0.5rem;}
+.modal-sub{font-size:14px;color:#888;text-align:center;margin-bottom:2rem;}
+.modal-field{margin-bottom:1rem;}
+.modal-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#999;display:block;margin-bottom:5px;}
+.modal-input{width:100%;padding:11px 14px;border:1px solid #e0e0e0;border-radius:10px;font-size:15px;font-family:'Geist',sans-serif;color:#111;outline:none;transition:border-color 0.18s;}
+.modal-input:focus{border-color:#111;}
+.modal-btn{width:100%;padding:13px;background:#111;color:#fff;border:none;border-radius:10px;font-size:15px;font-family:'Geist',sans-serif;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.modal-btn:hover{background:#333;}
+.modal-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.modal-toggle{text-align:center;font-size:13px;color:#888;margin-top:1.2rem;cursor:pointer;}
+.modal-toggle span{color:#111;text-decoration:underline;}
+.modal-err{font-size:13px;color:#ef4444;text-align:center;margin-top:0.5rem;display:none;}
+.modal-close{position:absolute;top:1rem;right:1.2rem;font-size:20px;cursor:pointer;color:#888;background:none;border:none;}
+
+/* ══════════════ PAGE 3 — OPEN SESSION (SENTIS STYLE) ══════════════ */
+#p3{background:#f5f0eb;min-height:100vh;}
+.session-wrap{display:flex;height:100vh;overflow:hidden;}
+/* Dark sidebar like Sentis */
+.sess-sidebar{width:260px;min-width:260px;background:#1a0f0f;display:flex;flex-direction:column;}
+.sess-sidebar-top{padding:1rem;}
+.sess-new-btn{width:100%;padding:10px 14px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);border:none;border-radius:8px;font-size:13px;font-family:'Geist',sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.15s;margin-bottom:0.8rem;}
+.sess-new-btn:hover{background:rgba(255,255,255,0.14);}
+.sess-search{width:100%;padding:8px 12px;background:rgba(255,255,255,0.06);border:none;border-radius:8px;font-size:13px;color:rgba(255,255,255,0.5);font-family:'Geist',sans-serif;outline:none;display:flex;align-items:center;gap:6px;}
+.sess-search-wrap{position:relative;}
+.sess-search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);pointer-events:none;}
+.sess-search-inp{width:100%;padding:8px 12px 8px 32px;background:rgba(255,255,255,0.06);border:none;border-radius:8px;font-size:13px;color:rgba(255,255,255,0.6);font-family:'Geist',sans-serif;outline:none;}
+.sess-search-inp::placeholder{color:rgba(255,255,255,0.28);}
+.sess-sidebar-list{flex:1;overflow-y:auto;padding:0.8rem;}
+.sess-sidebar-list::-webkit-scrollbar{width:4px;}
+.sess-sidebar-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:2px;}
+.sess-hist-label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.2);padding:0 0.5rem;margin-bottom:0.5rem;}
+.sess-hist-item{padding:9px 10px;border-radius:8px;font-size:13px;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;}
+.sess-hist-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.75);}
+.sess-hist-item.active{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.9);}
+.sess-sidebar-bot{padding:1rem;border-top:1px solid rgba(255,255,255,0.06);}
+.sess-user-row{display:flex;align-items:center;gap:10px;}
+.sess-avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;flex-shrink:0;}
+.sess-user-name{font-size:13px;color:rgba(255,255,255,0.7);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sess-logout{font-size:11px;color:rgba(255,255,255,0.25);cursor:pointer;transition:color 0.15s;}
+.sess-logout:hover{color:#ef4444;}
+/* Main area */
+.sess-main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(135deg,#f5f0eb 0%,#ede8e0 50%,#e8e0d8 100%);}
+.sess-topbar{height:52px;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(255,255,255,0.4);backdrop-filter:blur(8px);flex-shrink:0;}
+.sess-topbar-brand{font-family:'Instrument Serif',serif;font-size:17px;color:#1a1814;cursor:pointer;letter-spacing:-0.2px;}
+.sess-mode-select{display:flex;gap:5px;flex-wrap:wrap;}
+.sess-mpill{font-family:'Instrument Serif',serif;font-size:12px;font-style:italic;padding:4px 12px;border-radius:20px;border:1px solid rgba(0,0,0,0.12);color:#888;background:transparent;cursor:pointer;transition:all 0.15s;}
+.sess-mpill:hover{border-color:#111;color:#111;}
+.sess-mpill.active{background:#1a0f0f;color:rgba(255,255,255,0.9);border-color:transparent;}
+.sess-settings{display:flex;gap:6px;}
+.sess-sel{padding:4px 8px;border:1px solid rgba(0,0,0,0.1);border-radius:6px;font-size:11px;color:#666;font-family:'Geist',sans-serif;outline:none;background:rgba(255,255,255,0.6);cursor:pointer;}
+/* Messages */
+.sess-messages{flex:1;overflow-y:auto;padding:2rem 0;}
+.sess-messages::-webkit-scrollbar{width:4px;}
+.sess-messages::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.1);border-radius:2px;}
+.sess-msg-wrap{display:flex;flex-direction:column;align-items:flex-start;max-width:700px;width:100%;margin:0 auto 1.5rem;padding:0 1.5rem;}
+.sess-msg-wrap.user{align-items:flex-end;}
+.sess-msg-label{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:rgba(0,0,0,0.3);margin-bottom:5px;}
+.sess-bubble{max-width:88%;padding:12px 16px;border-radius:16px;font-size:15px;line-height:1.7;animation:msgIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;}
+@keyframes msgIn{from{opacity:0;transform:translateY(16px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+.sess-bubble.user{background:#1a0f0f;color:rgba(255,255,255,0.88);border-radius:16px 16px 4px 16px;}
+.sess-bubble.ai{background:rgba(255,255,255,0.7);color:#1a1814;border:1px solid rgba(0,0,0,0.07);border-radius:16px 16px 16px 4px;white-space:pre-wrap;backdrop-filter:blur(4px);}
+.sess-bubble-actions{display:flex;gap:5px;margin-top:6px;animation:fadeUp 0.3s 0.2s ease both;opacity:0;animation-fill-mode:both;}
+.sess-act-btn{padding:4px 10px;border-radius:6px;border:1px solid rgba(0,0,0,0.1);font-size:11px;color:#888;background:rgba(255,255,255,0.6);cursor:pointer;font-family:'Geist',sans-serif;transition:all 0.15s;}
+.sess-act-btn:hover{background:rgba(255,255,255,0.9);color:#111;}
+.sess-typing{display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(255,255,255,0.7);border:1px solid rgba(0,0,0,0.07);border-radius:16px;width:fit-content;backdrop-filter:blur(4px);animation:msgIn 0.3s ease both;}
+.sess-thinking-word{font-size:13px;color:rgba(0,0,0,0.45);font-style:italic;font-family:'Instrument Serif',serif;min-width:80px;}
+.sess-thinking-timer{font-size:11px;color:rgba(0,0,0,0.25);font-family:'Geist Mono',monospace;}
+.sess-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,0.2);animation:typing 1.2s infinite;}
+.sess-dot:nth-child(2){animation-delay:0.2s;}
+.sess-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes typing{0%,80%,100%{transform:scale(0.6);opacity:0.3}40%{transform:scale(1);opacity:1}}
+/* Input area */
+.sess-input-area{background:transparent;padding:1rem 1.5rem 1.5rem;flex-shrink:0;}
+.sess-input-box{max-width:700px;margin:0 auto;background:rgba(28,16,12,0.85);border-radius:18px;padding:18px 20px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.2);backdrop-filter:blur(12px);}
+.sess-ta{width:100%;background:transparent;border:none;outline:none;color:rgba(255,255,255,0.82);font-family:'Geist',sans-serif;font-size:15px;font-weight:300;resize:none;min-height:42px;max-height:160px;line-height:1.6;border-radius:12px;transition:min-height 0.2s ease;}
+.sess-ta::placeholder{color:rgba(255,255,255,0.28);}
+.sess-ta-foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);}
+.sess-ta-lbl{font-size:12px;color:rgba(255,255,255,0.28);font-style:italic;font-family:'Instrument Serif',serif;}
+.sess-ta-r{display:flex;gap:8px;align-items:center;}
+.sess-send{width:34px;height:34px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.8);transition:all 0.2s;}
+.sess-send:hover{background:rgba(255,255,255,0.28);transform:scale(1.08);}
+.sess-send:disabled{background:rgba(255,255,255,0.06);cursor:not-allowed;}
+/* Greeting / Empty state — Sentis style */
+.sess-greeting{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;padding:2rem;}
+.sess-greeting-h{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#1a1814;margin-bottom:0.4rem;letter-spacing:-0.5px;}
+.sess-greeting-s{font-size:15px;color:#888;margin-bottom:0;}
+
+/* ══════════════ PAGES 4-8 — DARK PAGES ══════════════ */
+.dark-page{background:#0e0a06;min-height:100vh;color:#c8bfb0;}
+.dark-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;padding:0 2.5rem;background:rgba(14,10,6,0.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.04);}
+.dark-nav-logo{font-family:'Instrument Serif',serif;font-size:20px;color:#c8bfb0;cursor:pointer;}
+.dark-nav-links{display:flex;gap:2.5rem;margin-left:auto;}
+.dark-nav-link{font-size:14px;color:#5a4a3a;cursor:pointer;transition:color 0.15s;}
+.dark-nav-link:hover,.dark-nav-link.active{color:#c8bfb0;}
+.dark-nav-link.active{border-bottom:1px solid #8a7a68;padding-bottom:2px;}
+.dark-content{max-width:1000px;margin:0 auto;padding:100px 3rem 5rem;}
+.dark-tag{font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#4a3a2a;margin-bottom:1rem;}
+.dark-h1{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:#c8bfb0;margin-bottom:1.5rem;letter-spacing:-1px;line-height:1.1;}
+.dark-h1 em{font-style:italic;color:#8a7a68;}
+.dark-p{font-size:16px;color:#5a4a3a;line-height:1.85;font-weight:300;max-width:660px;margin-bottom:1.5rem;}
+.dark-section-title{font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#c8bfb0;margin-bottom:2rem;letter-spacing:-0.5px;margin-top:4rem;}
+/* capabilities grid */
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.05);border-radius:20px;overflow:hidden;}
+.cap-card{background:#120c06;padding:2rem;transition:background 0.2s;cursor:default;}
+.cap-card:hover{background:#1a1008;}
+.cap-icon{font-size:22px;margin-bottom:12px;}
+.cap-title{font-size:15px;font-weight:500;color:#c8bfb0;margin-bottom:8px;}
+.cap-desc{font-size:13px;color:#5a4a3a;line-height:1.7;}
+/* philosophy pillars */
+.phil-grid{display:flex;flex-direction:column;gap:2rem;}
+.phil-item{border-left:2px solid rgba(255,255,255,0.08);padding-left:1.8rem;}
+.phil-label{font-size:12px;font-weight:500;color:#8a7a68;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;}
+.phil-text{font-size:15px;color:#5a4a3a;line-height:1.7;}
+/* dark CTA */
+.dark-cta{background:#111;padding:6rem 3rem;text-align:center;}
+.dark-cta h2{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px;}
+.dark-cta p{font-size:15px;color:#555;margin-bottom:2.5rem;}
+.dark-cta-btn{font-family:'Geist',sans-serif;font-size:16px;color:#111;background:#fff;border:none;padding:16px 40px;border-radius:50px;cursor:pointer;font-weight:500;transition:all 0.2s;}
+.dark-cta-btn:hover{background:#e8e8e8;}
+/* About specific */
+.about-steps{display:flex;flex-direction:column;}
+.about-step{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.about-step:first-child{border-top:1px solid rgba(255,255,255,0.04);}
+.about-step-num{font-family:'Instrument Serif',serif;font-size:3.5rem;font-weight:400;color:rgba(255,255,255,0.06);line-height:1;}
+.about-step-title{font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;color:#c8bfb0;margin-bottom:0.8rem;}
+.about-step-desc{font-size:15px;color:#5a4a3a;line-height:1.8;}
+/* White about page */
+.white-page{background:#fff;min-height:100vh;}
+.white-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;padding:0 2.5rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,0.07);}
+.white-nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.white-nav-logo-m{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#111;}
+.white-nav-logo-n{font-size:15px;color:#111;}
+.white-nav-logo-n span{color:#5b5bf6;}
+.white-nav-links{display:flex;gap:2rem;margin-left:auto;}
+.white-nav-link{font-size:14px;color:#888;cursor:pointer;transition:color 0.15s;}
+.white-nav-link:hover{color:#111;}
+.white-nav-link.active{color:#111;font-weight:500;border-bottom:1px solid #111;padding-bottom:2px;}
+.white-content{padding-top:58px;}
+.white-section{max-width:820px;margin:0 auto;padding:5rem 3rem;border-bottom:1px solid #e8e8e8;}
+.white-h1{font-family:'Instrument Serif',serif;font-size:clamp(4rem,8vw,7rem);font-weight:400;color:#111;letter-spacing:-2px;line-height:1;margin-bottom:2.5rem;animation:fadeUp 0.6s ease both;}
+.white-h2{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#111;margin-bottom:2rem;letter-spacing:-0.5px;}
+.white-p{font-size:17px;color:#444;line-height:1.8;font-weight:300;max-width:640px;margin-bottom:1.5rem;}
+.white-steps{display:flex;flex-direction:column;}
+.white-step{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:3rem 0;border-bottom:1px solid #f0f0f0;}
+.white-step-num{font-family:'Instrument Serif',serif;font-size:3.5rem;font-weight:400;color:#e8e8e8;line-height:1;}
+.white-step-t{font-family:'Instrument Serif',serif;font-size:1.6rem;font-weight:400;color:#111;margin-bottom:0.8rem;}
+.white-step-d{font-size:15px;color:#666;line-height:1.85;font-weight:300;}
+.white-tools{display:flex;flex-direction:column;}
+.white-tool{display:grid;grid-template-columns:1fr 2fr;gap:2rem;padding:2rem 0;border-top:1px solid #e8e8e8;align-items:start;}
+.white-tool-t{font-family:'Instrument Serif',serif;font-size:1.2rem;font-weight:400;color:#111;}
+.white-tool-d{font-size:15px;color:#666;line-height:1.75;font-weight:300;}
+.modes-table{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.mode-cell{padding:1.6rem;border:1px solid #f0f0f0;}
+.mode-cell:nth-child(even){border-left:none;}
+.mode-cell:nth-child(n+3){border-top:none;}
+.mode-cell:nth-child(n+3):nth-child(even){border-left:none;}
+.mode-cell-t{font-size:13px;font-weight:600;color:#111;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;}
+.mode-cell-d{font-size:13px;color:#888;line-height:1.6;}
+.black-cta{background:#111;padding:8rem 3rem;text-align:center;}
+.black-cta h2{font-family:'Instrument Serif',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:400;color:#fff;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-1.5px;}
+.black-cta p{font-size:16px;color:#555;margin-bottom:3rem;}
+.black-cta-btn{font-size:16px;color:#111;background:#fff;border:none;padding:18px 48px;border-radius:50px;cursor:pointer;font-weight:500;font-family:'Geist',sans-serif;transition:all 0.2s;}
+.black-cta-btn:hover{background:#e8e8e8;}
+.black-footer{background:#111;padding:4rem 3rem 0;}
+.bfoot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:3rem;padding-bottom:3rem;border-bottom:1px solid #1a1a1a;}
+.bfoot-col-t{font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.06em;}
+.bfoot-col-brand{font-family:'Instrument Serif',serif;font-size:1.2rem;color:#fff;margin-bottom:1.2rem;}
+.bfoot-col-desc{font-size:13px;color:#444;line-height:1.75;}
+.bfoot-link{display:block;font-size:14px;color:#444;cursor:pointer;margin-bottom:0.6rem;text-decoration:none;transition:color 0.15s;}
+.bfoot-link:hover{color:#fff;}
+.bfoot-bot{max-width:1100px;margin:0 auto;padding:1.5rem 0;text-align:center;font-size:12px;color:#2a2a2a;font-family:'Geist Mono',monospace;letter-spacing:0.08em;}
+
+@media(max-width:640px){
+  .p2-foot-in{grid-template-columns:1fr;}
+  .p2-foot-right{text-align:left;}
+  .sess-sidebar{display:none;}
+  .sess-quick-grid{grid-template-columns:1fr;}
+  #p2 nav .p2-navlinks{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     PAGE 1 — ERANALUM (WHITE HOMEPAGE)
+════════════════════════════════════════ -->
+<div id="p1" class="page active">
+  <!-- NEURAPEX STYLE NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);">
+
+    <!-- Logo with icon like Neurapex -->
+    <div style="display:flex;align-items:center;gap:12px;cursor:pointer;background:#fff;border:1px solid #e8e8e8;padding:8px 16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);" onclick="goHome()">
+      <div style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:900;color:#111;line-height:1;letter-spacing:-2px;">𝔈𝔯</div>
+      <div style="font-size:15px;color:#111;font-weight:400;">erana<span style="color:#5b5bf6;">lum</span></div>
+    </div>
+
+    <!-- Center links -->
+    <div style="display:flex;gap:2.5rem;">
+      <span style="font-size:14px;color:#555;cursor:pointer;transition:color 0.15s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'" onclick="goPage('p6')">About</span>
+      <span style="font-size:14px;color:#555;cursor:pointer;transition:color 0.15s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#555'" onclick="goPage('p7')">How it Works</span>
+    </div>
+
+    <!-- Right: Contact + Try Eranatis -->
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button onclick="goPage('p8')" style="font-size:14px;color:#555;border:1px solid #e0e0e0;padding:9px 20px;border-radius:10px;cursor:pointer;background:#fff;font-family:'Geist',sans-serif;transition:all 0.15s;" onmouseover="this.style.borderColor='#aaa';this.style.color='#111'" onmouseout="this.style.borderColor='#e0e0e0';this.style.color='#555'">Contact</button>
+      <button onclick="goEranatis()" style="font-size:14px;font-weight:500;color:#fff;background:#111;border:none;padding:10px 22px;border-radius:12px;cursor:pointer;font-family:'Geist',sans-serif;display:flex;align-items:center;gap:7px;transition:all 0.15s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#111'">Try Eranatis <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></button>
+    </div>
+  </nav>
+
+  <section class="p1-hero">
+    <div style="max-width:680px;animation:fadeUp 0.7s ease both;">
+      <h1 class="p1-h1">Writing,<em>Intelligently.</em></h1>
+      <p class="p1-p">We're building AI that reasons across all writing needs. Instead of juggling multiple tools, ask <strong>one system</strong> to write essays, emails, stories, captions — in English, Hindi, or Hinglish.</p>
+      <div class="p1-btns">
+        <button class="btn-blk" onclick="goEranatis()">Try Eranatis <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></button>
+        <span class="ghost" onclick="goPage('p7')"><u>See how it works</u></span>
+    </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <div class="p1-cta-sec">
+    <h2>Start writing with <em>Eranatis</em></h2>
+    <p>Your AI writing polymath — essays, emails, stories and more.</p>
+    <button class="btn-blk" style="margin:0 auto;" onclick="goEranatis()">Try Eranatis <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></button>
+  </div>
+
+  <!-- NEURAPEX STYLE DARK FOOTER -->
+  <footer style="background:#111;padding:0;">
+    <!-- Main footer grid -->
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1.5fr 1fr 1.5fr;gap:3rem;padding:4rem 3rem 3rem;border-bottom:1px solid rgba(255,255,255,0.08);">
+
+      <!-- Company -->
+      <div>
+        <div style="font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">Company</div>
+        <p style="font-size:14px;color:#555;line-height:1.75;font-weight:300;max-width:280px;">We're building an AI writing system that can reason across all your writing needs — essays, emails, stories, captions and more. Built for India.</p>
+      </div>
+
+      <!-- Pages -->
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Pages</div>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;">
+          <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p6')">About</span>
+          <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p7')">How it Works</span>
+          <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p8')">Contact</span>
+        </div>
+      </div>
+
+      <!-- Eranatis -->
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Eranatis</div>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;">
+          <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goEranatis()">Eranatis ↗</span>
+        </div>
+      </div>
+
+      <!-- Get in Touch -->
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Get in Touch</div>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;">
+          <a href="mailto:asatisam053@gmail.com" style="font-size:15px;color:#555;text-decoration:none;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">asatisam053@gmail.com</a>
+          <a href="https://www.linkedin.com/in/samarth-asati" target="_blank" style="font-size:15px;color:#555;text-decoration:none;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="max-width:1200px;margin:0 auto;padding:1.5rem 3rem;text-align:center;">
+      <div style="font-size:12px;color:#2a2a2a;font-family:'Geist Mono',monospace;letter-spacing:0.1em;">&copy; 2026 Eranalum</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 2 — ERANATIS HERO (EXACT SENTIS)
+════════════════════════════════════════ -->
+<div id="p2" class="page">
+
+  <!-- SENTIS EXACT NAV — transparent, logo left, links center, Login+Signup right -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;padding:0 2.5rem;background:transparent;">
+    <span style="font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:#111;cursor:pointer;letter-spacing:-0.3px;" onclick="goHome()">Eranatis</span>
+    <div style="display:flex;gap:3rem;margin-left:3.5rem;">
+      <span style="font-size:14px;color:#444;cursor:pointer;transition:color 0.15s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#444'" onclick="checkAuth()">Open Session</span>
+      <span style="font-size:14px;color:#444;cursor:pointer;transition:color 0.15s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#444'" onclick="goPage('p4')">Capabilities</span>
+      <span style="font-size:14px;color:#444;cursor:pointer;transition:color 0.15s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#444'" onclick="goPage('p5')">Philosophy</span>
+    </div>
+    <!-- Log in + Sign up — right side like Sentis -->
+    <div style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+      <button onclick="showModal();showLoginStep();" style="font-size:14px;font-weight:500;color:#fff;background:#2d1a1a;border:none;padding:9px 22px;border-radius:50px;cursor:pointer;font-family:'Geist',sans-serif;transition:all 0.15s;" onmouseover="this.style.background='#3d2020'" onmouseout="this.style.background='#2d1a1a'">Log in</button>
+      <button onclick="showModal();showSignupStep();" style="font-size:14px;color:#333;background:rgba(255,255,255,0.9);border:1.5px solid rgba(0,0,0,0.15);padding:9px 22px;border-radius:50px;cursor:pointer;font-family:'Geist',sans-serif;transition:all 0.15s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">Sign up</button>
+    </div>
+  </nav>
+
+  <!-- FULL SCREEN HERO — exact Sentis gradient -->
+  <div style="position:relative;width:100%;height:100vh;overflow:hidden;background:linear-gradient(180deg,#d4d0ca 0%,#b8b4ae 15%,#9c9890 30%,#807c76 45%,#605c56 60%,#3c3028 75%,#1e1208 88%,#0e0804 100%);">
+
+    <!-- Da Vinci portrait — right side, large, same as Sentis -->
+    <img id="davinci" src="data:image/png;base64,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" alt="" style="position:absolute;right:0;bottom:0;height:92%;width:auto;object-fit:contain;object-position:bottom;pointer-events:none;filter:grayscale(5%) contrast(1.0) brightness(0.95);mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,0.3) 8%,rgba(0,0,0,0.85) 25%,#000 50%),linear-gradient(to top,transparent 0%,rgba(0,0,0,0.5) 6%,#000 15%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,0.3) 8%,rgba(0,0,0,0.85) 25%,#000 50%),linear-gradient(to top,transparent 0%,rgba(0,0,0,0.5) 6%,#000 15%);mask-composite:intersect;-webkit-mask-composite:source-in;animation:dvIn 1.2s 0.2s ease both;opacity:0;animation-fill-mode:both;"/>
+
+    <!-- CENTER CONTENT -->
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;padding:0 2rem;">
+      <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:400;color:#1a1410;letter-spacing:-0.3px;margin-bottom:0.5rem;text-align:center;animation:fadeUp 0.7s ease both;">Introducing Eranatis</h1>
+      <p style="font-size:15px;color:#5a5248;font-weight:300;letter-spacing:0.05em;margin-bottom:3rem;text-align:center;animation:fadeUp 0.7s 0.08s ease both;opacity:0;animation-fill-mode:both;">a writing polymath</p>
+
+      <!-- DARK SEARCH BAR — exact Sentis style -->
+      <div style="width:100%;max-width:560px;animation:fadeUp 0.7s 0.15s ease both;opacity:0;animation-fill-mode:both;">
+        <div style="background:rgba(28,12,12,0.82);border-radius:16px;padding:18px 20px 14px;box-shadow:0 20px 60px rgba(0,0,0,0.4);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.05);">
+          <textarea id="heroTA" rows="2" placeholder="What's on your mind, and pen?" style="width:100%;background:transparent;border:none;outline:none;color:rgba(255,255,255,0.8);font-family:'Geist',sans-serif;font-size:15px;font-weight:300;line-height:1.55;resize:none;min-height:44px;max-height:120px;" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();heroSendClick();}"></textarea>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:10px;">
+            <label for="heroFile" style="color:rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            </label>
+            <input type="file" id="heroFile" style="display:none" accept=".txt,.pdf">
+            <button onclick="heroSendClick()" style="width:36px;height:36px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.85);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.28)';this.style.transform='scale(1.08)'" onmouseout="this.style.background='rgba(255,255,255,0.15)';this.style.transform='scale(1)'">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transition overlay -->
+  <div class="trans-overlay" id="transOverlay">
+    <div class="trans-txt" id="transTxt">Writing...</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="p2-footer">
+    <div class="p2-foot-in">
+      <div>
+        <div class="p2-foot-brand"><div class="p2-foot-brand-logo">Er</div><div class="p2-foot-brand-name">erana<span>lum</span></div></div>
+        <p class="p2-foot-desc">We're building an AI writing system that reasons across all your writing needs — essays, emails, stories, captions, and more.</p>
+        <div class="p2-foot-email"><span>Email:</span><a href="mailto:asatisam053@gmail.com">asatisam053@gmail.com</a></div>
+      </div>
+      <div class="p2-foot-right">
+        <div class="p2-fb-title">Feedbacks</div>
+        <p class="p2-fb-desc">We're always open for feedback. If you think something's worth improving, kindly feel free to reach out.</p>
+        <a class="p2-connect" href="mailto:asatisam053@gmail.com?subject=Feedback for Eranatis">Connect <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+    <div class="p2-foot-bot">&copy; 2026 Eranalum &nbsp;·&nbsp; <span onclick="goPage('p9')" style="cursor:pointer;color:#888;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:1px;transition:all 0.15s;" onmouseover="this.style.color='#fff';this.style.borderBottomColor='#fff'" onmouseout="this.style.color='#888';this.style.borderBottomColor='rgba(255,255,255,0.3)'">Terms & Privacy</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 3 — OPEN SESSION (SENTIS STYLE)
+════════════════════════════════════════ -->
+<div id="p3" class="page">
+  <div class="session-wrap">
+    <!-- DARK SIDEBAR -->
+    <div class="sess-sidebar">
+      <div class="sess-sidebar-top">
+        <button class="sess-new-btn" onclick="newSession()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Open Session
+        </button>
+        <div class="sess-search-wrap">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="sess-search-inp" type="text" placeholder="Search..." oninput="filterHist(this.value)">
+        </div>
+      </div>
+      <div class="sess-sidebar-list" id="sessSidebarList">
+        <div class="sess-hist-label">History</div>
+        <div id="sessHistItems"></div>
+      </div>
+      <div class="sess-sidebar-bot">
+        <div class="sess-user-row">
+          <div class="sess-avatar" id="sessAvatar">S</div>
+          <div class="sess-user-name" id="sessUserName">Samarth</div>
+          <span class="sess-logout" onclick="logout()">↩</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="sess-main">
+      <!-- Top bar -->
+      <div class="sess-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2" cursor="pointer" onclick="goEranatis()"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span class="sess-topbar-brand" onclick="goEranatis()">Eranatis</span>
+        </div>
+        <div class="sess-mode-select" id="sessModeRow">
+          <button class="sess-mpill active" onclick="setSessMode(this,'essay')">Essay</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'email')">Email</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'caption')">Caption</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'story')">Story</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'poem')">Poem</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'improve')">Improve</button>
+          <button class="sess-mpill" onclick="setSessMode(this,'summarize')">Summarize</button>
+        </div>
+        <div class="sess-settings">
+          <select class="sess-sel" id="sessLang"><option value="english">English</option><option value="hindi">Hindi</option><option value="hinglish">Hinglish</option></select>
+          <select class="sess-sel" id="sessTone"><option value="professional">Professional</option><option value="casual">Casual</option><option value="funny">Funny</option><option value="formal">Formal</option><option value="simple">Simple</option></select>
+        </div>
+      </div>
+
+      <!-- Messages area -->
+      <div class="sess-messages" id="sessMessages">
+        <!-- Greeting shown when empty -->
+        <div class="sess-greeting" id="sessGreeting">
+          <div class="sess-greeting-h" id="sessGreetingH">Good morning, Samarth</div>
+          <div class="sess-greeting-s">How can I help you today?</div>
+        </div>
+      </div>
+
+      <!-- Dark input bar like Sentis -->
+      <div class="sess-input-area">
+        <div class="sess-input-box">
+          <textarea id="sessTA" class="sess-ta" rows="2" placeholder="What's on your mind, and pen?" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sessGenerate();}"></textarea>
+          <div class="sess-ta-foot">
+            <span class="sess-ta-lbl" id="sessModeLabel">Essay mode</span>
+            <div class="sess-ta-r">
+              <label for="sessFile" style="width:30px;height:30px;color:rgba(255,255,255,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.color='rgba(255,255,255,0.65)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </label>
+              <input type="file" id="sessFile" style="display:none">
+              <button class="sess-send" id="sessSendBtn" onclick="sessGenerate()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 4 — CAPABILITIES (DARK)
+════════════════════════════════════════ -->
+<div id="p4" class="page">
+  <div class="dark-page">
+    <nav class="dark-nav">
+      <span class="dark-nav-logo" onclick="goEranatis()">Eranatis</span>
+      <div class="dark-nav-links">
+        <span class="dark-nav-link active">Capabilities</span>
+        <span class="dark-nav-link" onclick="goPage('p5')">Philosophy</span>
+        <span class="dark-nav-link" onclick="goEranatis()">← Eranatis</span>
+      </div>
+    </nav>
+    <div class="dark-content">
+      <div class="dark-tag">Capabilities</div>
+      <h1 class="dark-h1">Everything Eranatis<br><em>can do for you.</em></h1>
+      <p class="dark-p">From a single sentence to a full essay — Eranatis reasons across all writing modalities, in the language you speak.</p>
+      <div class="cap-grid" style="margin-top:3rem;">
+        <div class="cap-card"><div class="cap-icon">📝</div><div class="cap-title">Essay & Assignment</div><div class="cap-desc">Structured, well-argued essays on any topic — student or professional grade. Perfectly formatted, every time.</div></div>
+        <div class="cap-card"><div class="cap-icon">✉️</div><div class="cap-title">Email & Letter</div><div class="cap-desc">Professional emails, leave requests, proposals — the right tone, the right words, instantly.</div></div>
+        <div class="cap-card"><div class="cap-icon">📱</div><div class="cap-title">Social Captions</div><div class="cap-desc">Viral Instagram, Twitter, LinkedIn captions that actually get engagement. Hook your audience from the first word.</div></div>
+        <div class="cap-card"><div class="cap-icon">📖</div><div class="cap-title">Story & Creative</div><div class="cap-desc">Short stories, poems, creative writing — emotionally resonant and original. Let your imagination flow.</div></div>
+        <div class="cap-card"><div class="cap-icon">✨</div><div class="cap-title">Improve & Rewrite</div><div class="cap-desc">Paste your draft — Eranatis refines it into something sharper, clearer, and more compelling.</div></div>
+        <div class="cap-card"><div class="cap-icon">🔍</div><div class="cap-title">Summarize</div><div class="cap-desc">Paste any long article or document — get the key points in seconds. Save hours of reading time.</div></div>
+        <div class="cap-card"><div class="cap-icon">🌐</div><div class="cap-title">3 Languages</div><div class="cap-desc">English, Hindi, Hinglish — write how you think, not how you're told to. Built natively for India.</div></div>
+        <div class="cap-card"><div class="cap-icon">🎭</div><div class="cap-title">5 Tone Styles</div><div class="cap-desc">Professional, Casual, Funny, Formal, Simple — match the exact vibe your writing needs, every time.</div></div>
+      </div>
+      <div style="text-align:center;margin-top:3rem;">
+        <button onclick="checkAuth()" style="font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;color:#c8bfb0;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:13px 32px;border-radius:50px;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">Open Session →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 5 — PHILOSOPHY (DARK)
+════════════════════════════════════════ -->
+<div id="p5" class="page">
+  <div class="dark-page">
+    <nav class="dark-nav">
+      <span class="dark-nav-logo" onclick="goEranatis()">Eranatis</span>
+      <div class="dark-nav-links">
+        <span class="dark-nav-link" onclick="goPage('p4')">Capabilities</span>
+        <span class="dark-nav-link active">Philosophy</span>
+        <span class="dark-nav-link" onclick="goEranatis()">← Eranatis</span>
+      </div>
+    </nav>
+    <div class="dark-content">
+      <div class="dark-tag">Philosophy</div>
+      <h1 class="dark-h1">Writing is thinking.<br><em>We make it effortless.</em></h1>
+      <p class="dark-p">Great writing has always been the difference between being heard and being ignored. For centuries, only the privileged had access to the best writers and editors.</p>
+      <p class="dark-p">Eranatis changes that. We believe everyone — students in Nagpur, creators in Jaipur, professionals in Pune — deserves world-class writing intelligence. In their own language. On their own terms. Without compromise.</p>
+      <div class="dark-section-title">Our thinking</div>
+      <div class="phil-grid">
+        <div class="phil-item"><div class="phil-label">One system</div><div class="phil-text">Instead of juggling 5 different tools, ask one AI that reasons across all your writing needs — from captions to essays to professional emails.</div></div>
+        <div class="phil-item"><div class="phil-label">Your language</div><div class="phil-text">Hindi, Hinglish, English — because your best ideas come in the language you think in, not the one you're forced to write in.</div></div>
+        <div class="phil-item"><div class="phil-label">Built for India</div><div class="phil-text">Not an afterthought — Eranatis is designed from the ground up for Indian students, writers, and creators.</div></div>
+        <div class="phil-item"><div class="phil-label">Intelligence, not templates</div><div class="phil-text">We don't do fill-in-the-blank. Eranatis actually thinks about what you need and writes with genuine understanding of context and audience.</div></div>
+      </div>
+      <div style="margin-top:4rem;padding:2.5rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:16px;text-align:center;">
+        <p style="font-family:'Instrument Serif',serif;font-size:1.4rem;font-style:italic;color:#8a7a68;line-height:1.6;margin-bottom:1.5rem;">"The function of good writing is to communicate — not to impress."</p>
+        <button onclick="checkAuth()" style="font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;color:#c8bfb0;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:13px 32px;border-radius:50px;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">Start writing →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 6 — ABOUT (WHITE)
+════════════════════════════════════════ -->
+<div id="p6" class="page">
+  <div class="white-page">
+    <nav class="white-nav">
+      <div class="white-nav-logo" onclick="goHome()"><div class="white-nav-logo-m">Er</div><div class="white-nav-logo-n">erana<span>lum</span></div></div>
+      <div class="white-nav-links">
+        <span class="white-nav-link active">About</span>
+        <span class="white-nav-link" onclick="goPage('p7')">How it Works</span>
+        <span class="white-nav-link" onclick="goEranatis()">Eranatis ↗</span>
+      </div>
+    </nav>
+    <div class="white-content">
+      <div class="white-section">
+        <h1 class="white-h1">About</h1>
+        <p class="white-p">We're an AI writing company with a goal of creating a unified, polymathic writing system — one that solves the fragmentation problem in writing AI. We're based in Gondia, Maharashtra, India.</p>
+      </div>
+      <div class="white-section">
+        <h2 class="white-h2">The Fragmentation Problem</h2>
+        <p class="white-p">The bottleneck in AI writing tools isn't capability — it's the fragmented nature of currently available apps, each designed for specific use cases. This leads to a world where you need different tools for essays, emails, captions, and stories.</p>
+        <p class="white-p">We realized that breadth-oriented tools can solve the fragmentation problem in ways narrow ones never could. Eranatis — the broadest AI writing tool built to understand all writing needs — is our closest-yet expression of that insight.</p>
+      </div>
+      <div class="white-section">
+        <h2 class="white-h2">Eranatis' thinking framework</h2>
+        <div style="display:flex;flex-direction:column;gap:3.5rem;margin-top:1rem;">
+          <div style="border-top:1px solid #e8e8e8;padding-top:2.5rem;"><h3 style="font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;color:#111;margin-bottom:1rem;">One system, all writing needs</h3><p class="white-p" style="margin-bottom:0;">Instead of switching between 5 different apps, Eranatis reasons across all writing modalities in a single unified experience.</p></div>
+          <div style="border-top:1px solid #e8e8e8;padding-top:2.5rem;"><h3 style="font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;color:#111;margin-bottom:1rem;">Language-aware generation</h3><p class="white-p" style="margin-bottom:0;">Most AI tools assume English. Eranatis is built natively for India — supporting English, Hindi, and Hinglish.</p></div>
+          <div style="border-top:1px solid #e8e8e8;padding-top:2.5rem;"><h3 style="font-family:'Instrument Serif',serif;font-size:1.5rem;font-weight:400;color:#111;margin-bottom:1rem;">Intelligence, not templates</h3><p class="white-p" style="margin-bottom:0;">Eranatis actually reasons about what you need and writes with genuine understanding of context, audience, and purpose.</p></div>
+        </div>
+      </div>
+      <div class="white-section" style="border-bottom:none;">
+        <h2 class="white-h2">Who's behind this</h2>
+        <p class="white-p"><strong style="font-weight:600;color:#111;">Samarth Asati</strong> — Founder. I'm 14, and I'm from Gondia, Maharashtra. I'm an engineer, thinker, and a writer. I started Eranalum as a series of experiments — exploring how AI could make writing more accessible for every Indian student and creator, regardless of the language they think in. Eranatis is the closest expression of that vision so far.</p>
+        <a href="https://samarthhh.vercel.app/" target="_blank" style="display:inline-block;margin-top:1rem;color:#555;border-bottom:1px solid rgba(85,85,85,0.3);padding-bottom:2px;transition:all 0.15s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#555'">Learn more about Samarth</a>
+      </div>
+      <div class="black-cta">
+        <h2>See what unified<br>writing AI looks like.</h2>
+        <p>Try Eranatis and experience it.</p>
+        <button class="black-cta-btn" onclick="goEranatis()">Try Eranatis →</button>
+      </div>
+      <div class="black-footer">
+        <div class="bfoot-inner">
+          <div><div class="bfoot-col-brand">Company</div><p class="bfoot-col-desc">We're building AI for writing, built natively for India.</p></div>
+          <div><div class="bfoot-col-t">Pages</div><span class="bfoot-link" onclick="goPage('p6')">About</span><span class="bfoot-link" onclick="goPage('p7')">How it Works</span><a class="bfoot-link" href="mailto:asatisam053@gmail.com">Contact</a></div>
+          <div><div class="bfoot-col-t">Eranatis</div><span class="bfoot-link" onclick="goEranatis()">Eranatis ↗</span></div>
+          <div><div class="bfoot-col-t">Get in Touch</div><a class="bfoot-link" href="mailto:asatisam053@gmail.com">asatisam053@gmail.com</a></div>
+        </div>
+        <div class="bfoot-bot">&copy; 2026 Eranalum</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 7 — HOW IT WORKS (WHITE)
+════════════════════════════════════════ -->
+<div id="p7" class="page">
+  <div class="white-page">
+    <nav class="white-nav">
+      <div class="white-nav-logo" onclick="goHome()"><div class="white-nav-logo-m">Er</div><div class="white-nav-logo-n">erana<span>lum</span></div></div>
+      <div class="white-nav-links">
+        <span class="white-nav-link" onclick="goPage('p6')">About</span>
+        <span class="white-nav-link active">How it Works</span>
+        <span class="white-nav-link" onclick="goEranatis()">Eranatis ↗</span>
+      </div>
+    </nav>
+    <div class="white-content">
+      <div class="white-section">
+        <h1 class="white-h1">How it<br>Works</h1>
+        <p class="white-p">Eranatis is simple to use — but powerful underneath. Here's exactly how it works, step by step.</p>
+      </div>
+      <div class="white-section">
+        <div class="white-steps">
+          <div class="white-step"><div class="white-step-num">01</div><div><div class="white-step-t">Choose your writing mode</div><p class="white-step-d">Select from 8 modes — Essay, Email, Story, Caption, Poem, Improve, Summarize, or Translate. Each mode tells Eranatis exactly what kind of output you need. The AI adjusts its entire approach based on your selection.</p></div></div>
+          <div class="white-step"><div class="white-step-num">02</div><div><div class="white-step-t">Pick your language & tone</div><p class="white-step-d">Choose English, Hindi, or Hinglish. Then pick a tone — Professional, Casual, Funny, Formal, or Simple. You can also set the length and target audience. Eranatis adapts everything to match your exact needs.</p></div></div>
+          <div class="white-step"><div class="white-step-num">03</div><div><div class="white-step-t">Type your topic or paste text</div><p class="white-step-d">Describe what you want — a topic, a prompt, or a draft you want improved. You can also attach a .txt or .pdf file for Eranatis to use as context. The more specific you are, the better the output.</p></div></div>
+          <div class="white-step"><div class="white-step-num">04</div><div><div class="white-step-t">Generate, copy, or download</div><p class="white-step-d">Hit generate — Eranatis writes your content in seconds. Copy to clipboard or download as a .txt file. Not satisfied? Hit Regenerate for a completely fresh take, or tweak your inputs and try again.</p></div></div>
+          <div class="white-step" style="border-bottom:none;"><div class="white-step-num">05</div><div><div class="white-step-t">Save your session history</div><p class="white-step-d">Login with your email to save all your writing sessions. Your history is stored securely and accessible anytime. Pick up where you left off, revisit old content, and build on your writing over time.</p></div></div>
+        </div>
+      </div>
+      <div class="white-section">
+        <h2 class="white-h2">Quick Tools</h2>
+        <p class="white-p" style="margin-bottom:2rem;">Beyond the main modes, Eranatis has one-click quick tools for the most common tasks.</p>
+        <div class="white-tools">
+          <div class="white-tool"><div class="white-tool-t"># Hashtag Generator</div><div class="white-tool-d">Instant trending hashtags for any topic, post, or reel. Saves 10 minutes of research — in one click.</div></div>
+          <div class="white-tool"><div class="white-tool-t">💡 Title Generator</div><div class="white-tool-d">5 catchy, click-worthy titles for your blog, video, or essay — generated instantly.</div></div>
+          <div class="white-tool"><div class="white-tool-t">👤 Bio Writer</div><div class="white-tool-d">A compelling Instagram or LinkedIn bio in under 150 characters. Sharp, personal, and on-brand.</div></div>
+          <div class="white-tool"><div class="white-tool-t">🎣 Hook Creator</div><div class="white-tool-d">3 powerful opening lines that grab attention from the first word — for essays, posts, or videos.</div></div>
+        </div>
+      </div>
+      <div class="white-section">
+        <h2 class="white-h2">All 8 Writing Modes</h2>
+        <div class="modes-table" style="margin-top:1rem;">
+          <div class="mode-cell"><div class="mode-cell-t">Essay</div><div class="mode-cell-d">Structured, well-argued essays for any topic — student or professional grade.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Email</div><div class="mode-cell-d">Professional emails, leave requests, proposals — the right tone, every time.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Caption</div><div class="mode-cell-d">Viral Instagram, Twitter, LinkedIn captions that actually get engagement.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Story</div><div class="mode-cell-d">Short stories and creative fiction — emotionally resonant and original.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Poem</div><div class="mode-cell-d">Beautiful, evocative poems on any topic — romantic, melancholic, celebratory.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Improve</div><div class="mode-cell-d">Paste your draft — Eranatis refines it into something sharper and more polished.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Summarize</div><div class="mode-cell-d">Any long article or document distilled into key points in seconds.</div></div>
+          <div class="mode-cell"><div class="mode-cell-t">Translate</div><div class="mode-cell-d">Accurate translation between English, Hindi, and Hinglish — keeping tone intact.</div></div>
+        </div>
+      </div>
+      <div class="black-cta">
+        <h2>See what unified<br>writing AI looks like.</h2>
+        <p>Try Eranatis and experience it.</p>
+        <button class="black-cta-btn" onclick="goEranatis()">Try Eranatis →</button>
+      </div>
+      <div class="black-footer">
+        <div class="bfoot-inner">
+          <div><div class="bfoot-col-brand">Company</div><p class="bfoot-col-desc">We're building AI for writing, built natively for India.</p></div>
+          <div><div class="bfoot-col-t">Pages</div><span class="bfoot-link" onclick="goPage('p6')">About</span><span class="bfoot-link" onclick="goPage('p7')">How it Works</span><a class="bfoot-link" href="mailto:asatisam053@gmail.com">Contact</a></div>
+          <div><div class="bfoot-col-t">Eranatis</div><span class="bfoot-link" onclick="goEranatis()">Eranatis ↗</span></div>
+          <div><div class="bfoot-col-t">Get in Touch</div><a class="bfoot-link" href="mailto:asatisam053@gmail.com">asatisam053@gmail.com</a></div>
+        </div>
+        <div class="bfoot-bot">&copy; 2026 Eranalum</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, getRedirectResult, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, collection, getDocs, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA29tQ-NhF0PCGEbG7wZ61MM6gR5QrEsVw",
+  authDomain: "eranatis-159d8.firebaseapp.com",
+  projectId: "eranatis-159d8",
+  storageBucket: "eranatis-159d8.firebasestorage.app",
+  messagingSenderId: "44233835220",
+  appId: "1:44233835220:web:bce0e9f88d5d8ca30e3141",
+  measurementId: "G-E1L77809LQ"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Expose to global scope
+window._fbAuth = auth;
+window._fbDb = db;
+window._fbGoogleProvider = googleProvider;
+window._fbFns = {
+  createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, signInWithRedirect, getRedirectResult, signOut, updateProfile,
+  doc, setDoc, getDoc, collection, getDocs, deleteDoc, updateDoc
+};
+
+// Handle Google redirect result on page load
+getRedirectResult(auth).then(async (result) => {
+  if(result && result.user){
+    const user = result.user;
+    const userRef = doc(db, 'users', user.uid);
+    const snap = await getDoc(userRef);
+    if(!snap.exists()){
+      await setDoc(userRef, {name: user.displayName||user.email.split('@')[0], email: user.email, createdAt: new Date().toISOString()});
+    }
+    window._currentFbUser = user;
+    if(typeof openSession === 'function') openSession();
+  }
+}).catch(()=>{});
+
+// Auth state listener
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window._currentFbUser = user;
+  } else {
+    window._currentFbUser = null;
+  }
+});
+</script>
+
+<!-- ════ AUTH MODAL ════ -->
+<div class="modal-bg" id="loginModal">
+  <div class="modal" style="position:relative;max-width:400px;">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <!-- STEP 0: Choose -->
+    <div id="authStep0">
+      <div class="modal-logo">Eranatis</div>
+      <div class="modal-sub">Your AI writing companion</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:1.8rem;">
+        <button class="modal-btn" onclick="showLoginStep()">Sign In with Email</button>
+        <button class="modal-btn" id="googleSignInBtn" style="background:#fff;color:#111;border:1px solid #e0e0e0;display:flex;align-items:center;justify-content:center;gap:10px;" onclick="doGoogleSignIn()">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Continue with Google
+        </button>
+        <button class="modal-btn" style="background:#f5f5f5;color:#111;border:1px solid #e0e0e0;" onclick="showSignupStep()">Create Account</button>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="authLogin" style="display:none;">
+      <button onclick="showStep0()" style="background:none;border:none;color:#aaa;font-size:13px;cursor:pointer;margin-bottom:1rem;padding:0;">← Back</button>
+      <div class="modal-logo" style="font-size:1.4rem;">Welcome back</div>
+      <div class="modal-sub">Sign in to your account</div>
+      <div class="modal-field" style="margin-top:1.2rem;"><label class="modal-label">Email</label><input class="modal-input" type="email" id="loginEmail" placeholder="you@example.com" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <div class="modal-field"><label class="modal-label">Password</label><input class="modal-input" type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="modal-btn" id="loginBtn" onclick="doLogin()">Sign In</button>
+      <div class="modal-err" id="loginErr"></div>
+      <div style="margin-top:1rem;"><button onclick="doGoogleSignIn()" style="width:100%;padding:10px;background:#fff;color:#111;border:1px solid #e0e0e0;border-radius:10px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Geist',sans-serif;"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Sign in with Google</button></div>
+      <div class="modal-toggle">No account? <span onclick="showSignupStep()">Sign up</span></div>
+    </div>
+
+    <!-- SIGNUP -->
+    <div id="authSignup" style="display:none;">
+      <button onclick="showStep0()" style="background:none;border:none;color:#aaa;font-size:13px;cursor:pointer;margin-bottom:1rem;padding:0;">← Back</button>
+      <div class="modal-logo" style="font-size:1.4rem;">Create account</div>
+      <div class="modal-sub">Join Eranatis — free forever</div>
+      <div class="modal-field" style="margin-top:1.2rem;"><label class="modal-label">Your Name</label><input class="modal-input" type="text" id="signupName" placeholder="Samarth Asati"></div>
+      <div class="modal-field"><label class="modal-label">Email</label><input class="modal-input" type="email" id="signupEmail" placeholder="you@example.com"></div>
+      <div class="modal-field"><label class="modal-label">Password</label><input class="modal-input" type="password" id="signupPass" placeholder="Min 6 characters"></div>
+      <button class="modal-btn" id="signupBtn" onclick="doSignup()">Create Account</button>
+      <div class="modal-err" id="signupErr"></div>
+      <div style="margin-top:1rem;"><button onclick="doGoogleSignIn()" style="width:100%;padding:10px;background:#fff;color:#111;border:1px solid #e0e0e0;border-radius:10px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Geist',sans-serif;"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Sign up with Google</button></div>
+      <div class="modal-toggle">Have account? <span onclick="showLoginStep()">Sign in</span></div>
+    </div>
+
+  </div>
+</div>
+<!-- ════════════════════════════════════════
+     PAGE 8 — CONTACT (WHITE, NEURAPEX STYLE)
+════════════════════════════════════════ -->
+<div id="p8" class="page">
+  <div class="white-page">
+    <nav class="white-nav">
+      <div class="white-nav-logo" onclick="goHome()"><div class="white-nav-logo-m">Er</div><div class="white-nav-logo-n">erana<span>lum</span></div></div>
+      <div class="white-nav-links">
+        <span class="white-nav-link" onclick="goPage('p6')">About</span>
+        <span class="white-nav-link" onclick="goPage('p7')">How it Works</span>
+        <span class="white-nav-link active">Contact</span>
+        <span class="white-nav-link" onclick="goEranatis()">Eranatis ↗</span>
+      </div>
+    </nav>
+    <div class="white-content">
+      <div class="white-section" style="border-bottom:none;min-height:80vh;padding-top:7rem;">
+        <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:400;color:#111;letter-spacing:-1.5px;line-height:1.05;margin-bottom:2.5rem;animation:fadeUp 0.6s ease both;">Get in touch</h1>
+        <p style="font-size:17px;color:#444;line-height:1.8;font-weight:300;max-width:520px;margin-bottom:4rem;animation:fadeUp 0.6s 0.08s ease both;opacity:0;animation-fill-mode:both;">If you're interested in learning more about our work, have any questions, or just want to say hi, feel free to reach out to us through any of the channels below.</p>
+
+        <div style="display:flex;flex-direction:column;gap:2.5rem;animation:fadeUp 0.6s 0.14s ease both;opacity:0;animation-fill-mode:both;">
+          <div>
+            <div style="font-size:13px;color:#aaa;margin-bottom:6px;">General inquiries</div>
+            <a href="mailto:eranalum.in@proton.me" style="font-family:'Instrument Serif',serif;font-size:1.3rem;color:#111;text-decoration:none;border-bottom:1px solid #111;padding-bottom:2px;transition:color 0.15s;" onmouseover="this.style.color='#5b5bf6'" onmouseout="this.style.color='#111'">eranalum.in@proton.me</a>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#aaa;margin-bottom:6px;">Founder</div>
+            <a href="mailto:asatisam053@gmail.com" style="font-family:'Instrument Serif',serif;font-size:1.3rem;color:#111;text-decoration:none;border-bottom:1px solid #111;padding-bottom:2px;transition:color 0.15s;" onmouseover="this.style.color='#5b5bf6'" onmouseout="this.style.color='#111'">asatisam053@gmail.com</a>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#aaa;margin-bottom:6px;">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/samarth-asati" target="_blank" style="font-family:'Instrument Serif',serif;font-size:1.3rem;color:#111;text-decoration:none;border-bottom:1px solid #111;padding-bottom:2px;transition:color 0.15s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='#111'">Samarth Asati</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark Footer -->
+      <div style="background:#111;">
+        <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1.5fr 1fr 1.5fr;gap:3rem;padding:4rem 3rem 3rem;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div>
+            <div style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:#fff;margin-bottom:1.2rem;">Company</div>
+            <p style="font-size:14px;color:#555;line-height:1.75;font-weight:300;max-width:280px;">We're building an AI writing system that reasons across all your writing needs — essays, emails, stories, captions and more. Built for India.</p>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Pages</div>
+            <div style="display:flex;flex-direction:column;gap:0.7rem;">
+              <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p6')">About</span>
+              <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p7')">How it Works</span>
+              <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goPage('p8')">Contact</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Eranatis</div>
+            <span style="font-size:15px;color:#555;cursor:pointer;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'" onclick="goEranatis()">Eranatis ↗</span>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#888;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.08em;">Get in Touch</div>
+            <div style="display:flex;flex-direction:column;gap:0.7rem;">
+              <a href="mailto:asatisam053@gmail.com" style="font-size:15px;color:#555;text-decoration:none;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">asatisam053@gmail.com</a>
+              <a href="https://www.linkedin.com/in/samarth-asati" target="_blank" style="font-size:15px;color:#555;text-decoration:none;transition:color 0.15s;font-family:'Instrument Serif',serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div style="max-width:1200px;margin:0 auto;padding:1.5rem 3rem;text-align:center;">
+          <div style="font-size:12px;color:#2a2a2a;font-family:'Geist Mono',monospace;letter-spacing:0.1em;">&copy; 2026 Eranalum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 9 — TERMS & PRIVACY POLICY
+════════════════════════════════════════ -->
+<div id="p9" class="page" style="background:#0a0a0a;min-height:100vh;color:#ccc;">
+
+  <!-- Nav -->
+  <nav style="position:sticky;top:0;z-index:100;height:54px;display:flex;align-items:center;padding:0 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <span style="font-family:'Instrument Serif',serif;font-size:18px;color:#fff;cursor:pointer;" onclick="goEranatis()">← Eranatis</span>
+    <span style="font-size:13px;color:#444;margin-left:auto;">Last updated: May 2026</span>
+  </nav>
+
+  <!-- HERO -->
+  <div style="text-align:center;padding:5rem 2rem 3rem;background:#0a0a0a;">
+    <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(3rem,7vw,6rem);font-weight:400;color:#fff;line-height:1.05;letter-spacing:-1px;margin-bottom:2rem;">Terms and<br>Conditions<br><em style="font-style:italic;">and Privacy Policy</em></h1>
+    <p style="font-size:16px;color:#666;max-width:580px;margin:0 auto 3rem;line-height:1.75;font-weight:300;">This page sets out the core terms governing Eranatis, an AI writing assistant designed by Eranalum. Eranatis is built to assist with writing tasks and is not meant to provide professional, legal, or medical advice in any way.</p>
+
+    <!-- 3 summary cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;max-width:900px;margin:0 auto;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;">
+      <div style="background:#111;padding:2rem;text-align:center;">
+        <div style="font-size:14px;font-weight:600;color:#e0dcd8;margin-bottom:1rem;">Writing Tool Only</div>
+        <div style="font-size:13px;color:#555;line-height:1.7;">Eranatis is intended to help users write essays, emails, stories, captions and more. It is not a substitute for professional advice of any kind.</div>
+      </div>
+      <div style="background:#111;padding:2rem;text-align:center;">
+        <div style="font-size:14px;font-weight:600;color:#e0dcd8;margin-bottom:1rem;">Data Transparency</div>
+        <div style="font-size:13px;color:#555;line-height:1.7;">Your writing history is stored securely in Firebase. We do not sell your data. You can delete your history at any time from your session.</div>
+      </div>
+      <div style="background:#111;padding:2rem;text-align:center;">
+        <div style="font-size:14px;font-weight:600;color:#e0dcd8;margin-bottom:1rem;">Jurisdiction</div>
+        <div style="font-size:13px;color:#555;line-height:1.7;">This document is written for publication under Indian law, with privacy language framed for current digital-product and data-protection standards.</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#333;margin-top:2rem;font-family:'Geist Mono',monospace;">Last updated: May 11, 2026</p>
+  </div>
+
+  <!-- MAIN CONTENT — sidebar TOC + sections -->
+  <div style="display:grid;grid-template-columns:260px 1fr;gap:0;max-width:1100px;margin:0 auto;padding:3rem 2rem 6rem;">
+
+    <!-- Sticky TOC sidebar -->
+    <div style="position:sticky;top:70px;align-self:start;padding-right:2rem;">
+      <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.5rem;font-size:13px;">
+        <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">Contents</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <a href="#t1" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">1. Overview</a>
+          <a href="#t2" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">2. Writing Tool Use Only</a>
+          <a href="#t3" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">3. Eligibility & Accounts</a>
+          <a href="#t4" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">4. Acceptable Use</a>
+          <a href="#t5" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">5. AI Output & Limits</a>
+          <a href="#t6" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">6. Privacy Scope</a>
+          <a href="#t7" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">7. Personal Data We Collect</a>
+          <a href="#t8" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">8. How We Use Your Data</a>
+          <a href="#t9" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">9. Storage & Deletion</a>
+          <a href="#t10" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">10. Security</a>
+          <a href="#t11" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">11. Intellectual Property</a>
+          <a href="#t12" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">12. Disclaimers & Liability</a>
+          <a href="#t13" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">13. Governing Law</a>
+          <a href="#t14" style="color:#555;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#555'">14. Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sections -->
+    <div style="display:flex;flex-direction:column;gap:0;">
+
+      <div id="t1" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">1. Overview</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">Eranatis is an AI writing product designed and operated by <strong style="color:#aaa;font-weight:600;">Eranalum</strong>. In these terms, "Eranatis," "we," "our," and "us" refer to Eranalum and the Eranatis website, applications, and related services.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">By accessing or using Eranatis, you agree to this combined Terms and Conditions and Privacy Policy. If you do not agree, you should not use the service.</p>
+        <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.2rem 1.5rem;margin-top:1.2rem;">
+          <p style="font-size:14px;color:#666;line-height:1.7;"><strong style="color:#aaa;">Current product scope:</strong> Eranatis currently supports authenticated accounts, writing sessions, AI-generated essays, emails, stories, captions, poems, summaries and improvements across English, Hindi, and Hinglish.</p>
+        </div>
+      </div>
+
+      <div id="t2" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">2. Writing Tool Use Only</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">Eranatis is built to assist with writing tasks — essays, emails, stories, captions, poems, and summaries. It is not a substitute for professional, legal, medical, or financial advice.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">Nothing produced by Eranatis should be treated as factual, authoritative, or professional advice. Users must independently verify outputs and consult qualified professionals for any serious matter.</p>
+      </div>
+
+      <div id="t3" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">3. Eligibility & Accounts</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">You must be at least 13 years old to use Eranatis. By creating an account, you confirm you meet this requirement. Accounts are registered via email/password or Google Sign In through Firebase Authentication.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">You are responsible for maintaining the security of your account credentials. Eranalum is not liable for any loss resulting from unauthorized access to your account.</p>
+      </div>
+
+      <div id="t4" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">4. Acceptable Use</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">You agree not to use Eranatis to generate content that is harmful, illegal, defamatory, harassing, or violates the rights of others. You agree not to attempt to misuse, reverse-engineer, or exploit the service.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">Eranalum reserves the right to terminate accounts that violate these terms without prior notice.</p>
+      </div>
+
+      <div id="t5" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">5. AI Output & Limits</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">AI-generated content may contain inaccuracies, errors, or biases. Eranatis uses third-party AI models (including Groq, Gemini, and OpenAI) to generate responses. The quality and accuracy of outputs depend on these external services.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">Eranalum does not guarantee the accuracy, completeness, or suitability of any AI-generated content for any purpose.</p>
+      </div>
+
+      <div id="t6" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">6. Privacy Scope</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;">This Privacy Policy applies to all personal data collected when you use Eranatis — including account creation, writing sessions, and history. We are committed to handling your data responsibly and transparently.</p>
+      </div>
+
+      <div id="t7" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">7. Personal Data We Collect</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">We collect the following data when you use Eranatis:</p>
+        <ul style="font-size:15px;color:#666;line-height:2;padding-left:1.5rem;">
+          <li><strong style="color:#aaa;">Account data:</strong> Name, email address, account creation date</li>
+          <li><strong style="color:#aaa;">Writing history:</strong> Your prompts and AI-generated responses, stored in Firestore</li>
+          <li><strong style="color:#aaa;">Usage data:</strong> Pages visited, features used (via Firebase Analytics)</li>
+          <li><strong style="color:#aaa;">Device data:</strong> Browser type, device type (collected automatically)</li>
+        </ul>
+      </div>
+
+      <div id="t8" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">8. How We Use Your Data</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">We use your data solely to:</p>
+        <ul style="font-size:15px;color:#666;line-height:2;padding-left:1.5rem;">
+          <li>Provide and improve the Eranatis writing service</li>
+          <li>Store and display your writing history</li>
+          <li>Authenticate your account securely</li>
+          <li>Understand usage patterns to improve the product</li>
+        </ul>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-top:1rem;">We do <strong style="color:#aaa;">not</strong> sell your personal data to any third party. We do not use your data to train AI models.</p>
+      </div>
+
+      <div id="t9" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">9. Storage & Deletion</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">Your data is stored in Google Firebase (Firestore), which is hosted on Google's infrastructure. You can delete individual writing sessions from your session history at any time.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">To request full account deletion, contact us at <a href="mailto:asatisam053@gmail.com" style="color:#8a7a68;text-decoration:underline;">asatisam053@gmail.com</a>. We will process deletion requests within 14 days.</p>
+      </div>
+
+      <div id="t10" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">10. Security</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;">We use Firebase Authentication and Firestore security rules to protect your data. Access to your data is restricted to your authenticated account only. While we implement reasonable security measures, no system is completely secure.</p>
+      </div>
+
+      <div id="t11" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">11. Intellectual Property</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">The Eranatis interface, design, branding, and code are the intellectual property of Eranalum. You retain ownership of the content you submit as prompts.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">AI-generated outputs are provided for your personal use. Eranalum makes no copyright claims over AI-generated content.</p>
+      </div>
+
+      <div id="t12" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">12. Disclaimers & Liability</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">Eranatis is provided "as is" without warranties of any kind. Eranalum is not liable for any damages arising from your use of the service, including reliance on AI-generated content.</p>
+        <p style="font-size:15px;color:#666;line-height:1.85;">Eranalum's total liability to you for any claim shall not exceed INR 0 (the service is free to use).</p>
+      </div>
+
+      <div id="t13" style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">13. Governing Law</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;">These Terms are governed by the laws of India. Any disputes shall be subject to the jurisdiction of courts in Maharashtra, India. This document is framed in accordance with India's Information Technology Act and applicable data protection standards.</p>
+      </div>
+
+      <div id="t14" style="padding:2.5rem 0;">
+        <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:1.2rem;">14. Contact</h2>
+        <p style="font-size:15px;color:#666;line-height:1.85;margin-bottom:1rem;">For any questions about these Terms or our Privacy Policy, please contact us:</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <a href="mailto:asatisam053@gmail.com" style="font-family:'Instrument Serif',serif;font-size:1.1rem;color:#8a7a68;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8a7a68'">asatisam053@gmail.com</a>
+          <a href="https://www.linkedin.com/in/samarth-asati" target="_blank" style="font-family:'Instrument Serif',serif;font-size:1.1rem;color:#8a7a68;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8a7a68'">LinkedIn — Samarth Asati</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="background:#050505;border-top:1px solid rgba(255,255,255,0.05);padding:2rem;text-align:center;">
+    <div style="font-size:12px;color:#2a2a2a;font-family:'Geist Mono',monospace;letter-spacing:0.08em;">&copy; 2026 Eranalum &nbsp;·&nbsp; <span onclick="goEranatis()" style="cursor:pointer;text-decoration:underline;" onmouseover="this.style.color='#666'" onmouseout="this.style.color='#2a2a2a'">Back to Eranatis</span></div>
+  </div>
+</div>
+
+<script>
+// ════ ROUTING ════
+const allPages = ['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
+function showPage(id){
+  allPages.forEach(p=>{const el=document.getElementById(p);if(el)el.classList.remove('active');});
+  const t=document.getElementById(id);if(t)t.classList.add('active');
+  window.scrollTo({top:0});
+}
+function goHome(){showPage('p1');}
+function goEranatis(){showPage('p2');}
+function goPage(id){showPage(id);}
+
+// ════ GREETING ════
+function getGreeting(){
+  const h=new Date().getHours();
+  if(h>=5&&h<12) return 'Morning';
+  if(h>=12&&h<17) return 'Afternoon';
+  return 'Evening';
+}
+
+// ════ AUTH — localStorage persistent (stays after browser close) ════
+// ════ FIREBASE AUTH ════
+function getCurrentUser(){return window._currentFbUser || null;}
+
+function checkAuth(){
+  if(getCurrentUser()){openSession();}
+  else{
+    // Wait briefly for Firebase auth to initialize
+    setTimeout(()=>{
+      if(getCurrentUser()){openSession();}
+      else{showModal();}
+    },800);
+  }
+}
+
+function showModal(){document.getElementById('loginModal').classList.add('show');showStep0();}
+function closeModal(){document.getElementById('loginModal').classList.remove('show');}
+function showStep0(){
+  ['authStep0','authLogin','authSignup'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('authStep0').style.display='block';
+}
+function showLoginStep(){
+  ['authStep0','authLogin','authSignup'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('authLogin').style.display='block';
+  document.getElementById('loginErr').style.display='none';
+  setTimeout(()=>document.getElementById('loginEmail').focus(),50);
+}
+function showSignupStep(){
+  ['authStep0','authLogin','authSignup'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('authSignup').style.display='block';
+  document.getElementById('signupErr').style.display='none';
+  setTimeout(()=>document.getElementById('signupName').focus(),50);
+}
+
+function setModalLoading(btnId, loading, text){
+  const btn=document.getElementById(btnId);
+  if(!btn)return;
+  btn.disabled=loading;
+  btn.textContent=loading?'Please wait...':text;
+}
+
+async function doSignup(){
+  const name=document.getElementById('signupName').value.trim();
+  const email=document.getElementById('signupEmail').value.trim();
+  const pass=document.getElementById('signupPass').value;
+  const err=document.getElementById('signupErr');
+  err.style.display='none';err.style.color='#ef4444';
+  if(!name||!email||!pass){err.style.display='block';err.textContent='Please fill all fields.';return;}
+  if(pass.length<6){err.style.display='block';err.textContent='Password must be at least 6 characters.';return;}
+  setModalLoading('signupBtn',true,'Create Account');
+  try{
+    const {createUserWithEmailAndPassword,updateProfile}=window._fbFns;
+    const cred=await createUserWithEmailAndPassword(window._fbAuth,email,pass);
+    await updateProfile(cred.user,{displayName:name});
+    // Save user to Firestore
+    const {doc,setDoc}=window._fbFns;
+    await setDoc(doc(window._fbDb,'users',cred.user.uid),{name,email,createdAt:new Date().toISOString()});
+    closeModal();openSession();
+  }catch(e){
+    err.style.display='block';
+    err.textContent=e.code==='auth/email-already-in-use'?'Email already registered. Sign in instead.':
+                   e.code==='auth/invalid-email'?'Invalid email address.':
+                   e.message||'Could not create account. Try again.';
+  }
+  setModalLoading('signupBtn',false,'Create Account');
+}
+
+async function doLogin(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const pass=document.getElementById('loginPass').value;
+  const err=document.getElementById('loginErr');
+  err.style.display='none';err.style.color='#ef4444';
+  if(!email||!pass){err.style.display='block';err.textContent='Please fill all fields.';return;}
+  setModalLoading('loginBtn',true,'Sign In');
+  try{
+    const {signInWithEmailAndPassword}=window._fbFns;
+    await signInWithEmailAndPassword(window._fbAuth,email,pass);
+    closeModal();openSession();
+  }catch(e){
+    err.style.display='block';
+    err.textContent=e.code==='auth/user-not-found'?'No account found. Sign up first.':
+                   e.code==='auth/wrong-password'||e.code==='auth/invalid-credential'?'Incorrect password.':
+                   e.message||'Could not sign in. Try again.';
+  }
+  setModalLoading('loginBtn',false,'Sign In');
+}
+
+async function doGoogleSignIn(){
+  try{
+    const {signInWithPopup, signInWithRedirect}=window._fbFns;
+    // Try popup first, fallback to redirect
+    try{
+      const result=await signInWithPopup(window._fbAuth,window._fbGoogleProvider);
+      const user=result.user;
+      const {doc,setDoc,getDoc}=window._fbFns;
+      const userRef=doc(window._fbDb,'users',user.uid);
+      const snap=await getDoc(userRef);
+      if(!snap.exists()){
+        await setDoc(userRef,{name:user.displayName||user.email.split('@')[0],email:user.email,createdAt:new Date().toISOString()});
+      }
+      closeModal();openSession();
+    }catch(popupErr){
+      if(popupErr.code==='auth/popup-blocked'||popupErr.code==='auth/popup-closed-by-user'){
+        // Fallback to redirect
+        await signInWithRedirect(window._fbAuth,window._fbGoogleProvider);
+      } else {
+        throw popupErr;
+      }
+    }
+  }catch(e){
+    if(e.code!=='auth/popup-closed-by-user'){
+      alert('Google sign in failed: '+e.message);
+    }
+  }
+}
+
+async function logout(){
+  const {signOut}=window._fbFns;
+  await signOut(window._fbAuth);
+  window._currentFbUser=null;
+  goEranatis();
+}
+
+function openSession(){
+  const user=getCurrentUser();
+  if(!user){showModal();return;}
+  const fullName=user.displayName||user.email.split('@')[0];
+  const firstName=fullName.split(' ')[0];
+  const greeting=getGreeting()+', '+firstName;
+  document.getElementById('sessAvatar').textContent=firstName.charAt(0).toUpperCase();
+  document.getElementById('sessUserName').textContent=fullName;
+  document.getElementById('sessMessages').innerHTML=
+    `<div class="sess-greeting" id="sessGreeting">
+      <div class="sess-greeting-h">${greeting}</div>
+      <div class="sess-greeting-s">How can I help you today?</div>
+    </div>`;
+  loadHistory();
+  showPage('p3');
+}
+
+// ════ HERO SEND → TRANSITION ════
+function heroSendClick(){
+  const text=document.getElementById('heroTA').value.trim();
+  const overlay=document.getElementById('transOverlay');
+  const txt=document.getElementById('transTxt');
+  overlay.style.pointerEvents='all';
+  overlay.style.opacity='1';
+  setTimeout(()=>{txt.style.opacity='1';txt.style.transform='translateY(0)';},300);
+  setTimeout(()=>{
+    if(getCurrentUser()){
+      if(text) document.getElementById('sessTA').value=text;
+      openSession();
+    } else {showModal();}
+    setTimeout(()=>{
+      overlay.style.opacity='0';
+      setTimeout(()=>{overlay.style.pointerEvents='none';txt.style.opacity='0';txt.style.transform='translateY(16px)';},550);
+    },150);
+  },1200);
+}
+
+// ════ SESSION ════
+let sessMode='essay';
+let sessHistory=[];
+
+const MP={
+  essay:'Write a well-structured, detailed, insightful essay on this topic',
+  email:'Write a clear, professional, well-formatted email for this purpose',
+  caption:'Write an engaging, creative, viral social media caption for',
+  story:'Write a compelling, emotional, original short story based on this idea',
+  poem:'Write a beautiful, evocative, expressive poem about',
+  improve:'Improve this text significantly — make it clearer, more engaging, and polished:',
+  summarize:'Summarize this content clearly and concisely in key bullet points:'
+};
+const LM={
+  english:'Write your response only in English.',
+  hindi:'Write your response only in Hindi using Devanagari script.',
+  hinglish:'Write your response in Hinglish — a natural, conversational mix of Hindi words and English, written in Roman script, the way Indian youth actually speak and text.'
+};
+
+function setSessMode(el,m){
+  document.querySelectorAll('.sess-mpill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  sessMode=m;
+  document.getElementById('sessModeLabel').textContent=m.charAt(0).toUpperCase()+m.slice(1)+' mode';
+}
+
+function newSession(){
+  const user=getCurrentUser();
+  const firstName=user?user.name.split(' ')[0]:'there';
+  document.getElementById('sessMessages').innerHTML=
+    `<div class="sess-greeting" id="sessGreeting">
+      <div class="sess-greeting-h">${getGreeting()}, ${firstName}</div>
+      <div class="sess-greeting-s">How can I help you today?</div>
+    </div>`;
+  document.getElementById('sessTA').value='';
+}
+
+function filterHist(q){
+  document.querySelectorAll('.sess-hist-item').forEach(i=>{
+    i.style.display=i.dataset.text.toLowerCase().includes(q.toLowerCase())?'block':'none';
+  });
+}
+
+function addMsg(role,text){
+  const gr=document.getElementById('sessGreeting');
+  if(gr)gr.remove();
+  const msgs=document.getElementById('sessMessages');
+  const wrap=document.createElement('div');
+  wrap.className='sess-msg-wrap'+(role==='user'?' user':'');
+  wrap.style.opacity='0';
+  wrap.style.transform='translateY(16px)';
+  const safe=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  if(role==='user'){
+    wrap.innerHTML=`<div class="sess-msg-label">You</div><div class="sess-bubble user">${safe}</div>`;
+  } else {
+    wrap.innerHTML=`<div class="sess-msg-label">Eranatis</div><div class="sess-bubble ai">${safe}</div>
+      <div class="sess-bubble-actions">
+        <button class="sess-act-btn" onclick="copyBubble(this)">Copy</button>
+        <button class="sess-act-btn" onclick="dlBubble(this)">Download</button>
+      </div>`;
+  }
+  msgs.appendChild(wrap);
+  // Animate in
+  requestAnimationFrame(()=>{
+    wrap.style.transition='opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.4,0.64,1)';
+    wrap.style.opacity='1';
+    wrap.style.transform='translateY(0)';
+  });
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function copyBubble(btn){
+  const text=btn.closest('.sess-msg-wrap').querySelector('.ai').textContent;
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);});
+}
+function dlBubble(btn){
+  const text=btn.closest('.sess-msg-wrap').querySelector('.ai').textContent;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));
+  a.download='eranatis.txt';a.click();
+}
+
+// Rotating thinking words + elapsed timer
+const thinkingWords=['Thinking...','Pondering...','Writing...','Crafting...','Reasoning...','Composing...'];
+let thinkingInterval=null;
+let thinkingTimerInterval=null;
+let thinkingStart=0;
+
+function addTyping(){
+  const msgs=document.getElementById('sessMessages');
+  const w=document.createElement('div');
+  w.className='sess-msg-wrap';w.id='typingWrap';
+  w.innerHTML=`<div class="sess-msg-label">Eranatis</div>
+    <div class="sess-typing">
+      <div class="sess-dot"></div><div class="sess-dot"></div><div class="sess-dot"></div>
+      <span class="sess-thinking-word" id="thinkWord">Thinking...</span>
+      <span class="sess-thinking-timer" id="thinkTimer">0s</span>
+    </div>`;
+  msgs.appendChild(w);
+  msgs.scrollTop=msgs.scrollHeight;
+  thinkingStart=Date.now();
+  let wIdx=0;
+  thinkingInterval=setInterval(()=>{
+    wIdx=(wIdx+1)%thinkingWords.length;
+    const el=document.getElementById('thinkWord');
+    if(el)el.textContent=thinkingWords[wIdx];
+  },1200);
+  thinkingTimerInterval=setInterval(()=>{
+    const el=document.getElementById('thinkTimer');
+    if(el)el.textContent=Math.floor((Date.now()-thinkingStart)/1000)+'s';
+  },1000);
+}
+
+function removeTyping(){
+  clearInterval(thinkingInterval);
+  clearInterval(thinkingTimerInterval);
+  const t=document.getElementById('typingWrap');
+  if(t)t.remove();
+}
+
+async function sessGenerate(){
+  const inp=document.getElementById('sessTA').value.trim();
+  if(!inp)return;
+  const lang=document.getElementById('sessLang').value;
+  const tone=document.getElementById('sessTone').value;
+  const btn=document.getElementById('sessSendBtn');
+  btn.disabled=true;
+  document.getElementById('sessTA').value='';
+  addMsg('user',inp);
+  addTyping();
+
+  const OPENAI_KEY='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';
+  const GROQ_KEY='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';
+  const GEMINI_KEY='AIzaSyAYD3fHj3adKdZdEl9k_mkL2oNKlx11j7Y';
+
+  const systemPrompt=`You are Eranatis — a smart AI writing assistant. You help with writing tasks and answer general knowledge questions.
+
+Current mode: ${sessMode} | Tone: ${tone} | Language: ${lang}
+${LM[lang]}
+
+RESPONSE FORMAT RULES (follow strictly based on tone):
+
+If tone is "professional" or "formal":
+- Use clean paragraphs, no emojis
+- For lists, use numbered points (1. 2. 3.)
+- Writing tasks: structured, formal, well-organized
+- Questions: clear paragraphs, precise language
+
+If tone is "casual" or "simple":
+- Mix of short paragraphs and bullet points (• )
+- Use 1-2 relevant emojis naturally in the text
+- Writing tasks: friendly, conversational flow
+- Questions: simple words, easy to read
+
+If tone is "funny":
+- Use emojis generously 😄🎉✨
+- Short punchy sentences and fun bullet points
+- Writing tasks: witty, playful, entertaining
+- Questions: fun explanation with humor
+
+CONTENT RULES:
+1. WRITING TASKS (essay/email/story/caption/poem/improve/summarize): Write excellent content directly. No preamble like "Here is your essay:". Just write it. Apply the tone fully.
+2. SIMPLE QUESTIONS (what is, who is, define): 2-4 sentences max. Short and clear.
+3. DETAILED QUESTIONS (how does, explain, why): 100-200 words. Apply tone formatting above.
+4. COMPLETELY UNRELATED (coding debug, math equations, stock tips, medical diagnosis): Say: "This falls outside my scope. I am built for writing and knowledge queries. For this type of query, a general-purpose tool would serve you better."
+5. CONVERSATION (hi, hello, thanks, how are you): 1-2 sentences, natural and warm.
+
+Always respond in the language specified. Never break character.`;
+
+  // Race all 3 APIs — fastest correct answer wins
+  const callOpenAI=()=>fetch('https://api.openai.com/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_KEY},
+    body:JSON.stringify({
+      model:'gpt-4o-mini',
+      messages:[{role:'system',content:systemPrompt},{role:'user',content:inp}],
+      max_tokens:1200,temperature:0.7
+    })
+  }).then(r=>r.json()).then(d=>d.choices?.[0]?.message?.content||'').catch(()=>'');
+
+  const callGroq=()=>fetch('https://api.groq.com/openai/v1/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_KEY},
+    body:JSON.stringify({
+      model:'llama-3.3-70b-versatile',
+      messages:[{role:'system',content:systemPrompt},{role:'user',content:inp}],
+      max_tokens:1200,temperature:0.7
+    })
+  }).then(r=>r.json()).then(d=>d.choices?.[0]?.message?.content||'').catch(()=>'');
+
+  const callGemini=()=>fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      contents:[{parts:[{text:inp}]}],
+      systemInstruction:{parts:[{text:systemPrompt}]},
+      generationConfig:{maxOutputTokens:1200,temperature:0.7}
+    })
+  }).then(r=>r.json()).then(d=>d.candidates?.[0]?.content?.parts?.[0]?.text||'').catch(()=>'');
+
+  try{
+    // Fire all 3 simultaneously — use first non-empty result
+    const result=await Promise.any([
+      callGroq(),   // Groq fastest usually
+      callGemini(), // Gemini second
+      callOpenAI()  // OpenAI third (might have CORS in browser)
+    ].map(p=>p.then(r=>{if(!r)throw new Error('empty');return r;})));
+
+    removeTyping();
+    addMsg('ai',result);
+    saveToHistory(inp,result);
+  }catch(e){
+    // All 3 failed — try sequentially as last resort
+    try{
+      const r=await callGroq();
+      if(r){removeTyping();addMsg('ai',r);saveToHistory(inp,r);}
+      else throw new Error('all failed');
+    }catch{
+      removeTyping();
+      addMsg('ai','⚠️ Could not connect to AI. Please check your internet and try again.');
+    }
+  }
+  btn.disabled=false;
+}
+
+async function saveToHistory(input,output){
+  const user=getCurrentUser();if(!user)return;
+  try{
+    const {doc,setDoc,collection}=window._fbFns;
+    const id='h_'+Date.now();
+    await setDoc(doc(window._fbDb,'users',user.uid,'history',id),{
+      id,input:input.substring(0,200),output,mode:sessMode,
+      title:null,time:new Date().toISOString()
+    });
+    loadHistory();
+  }catch(e){
+    // Fallback to localStorage
+    const key='era_hist_'+user.uid;
+    let hist=[];try{hist=JSON.parse(localStorage.getItem(key)||'[]');}catch{}
+    hist.unshift({id:'h_'+Date.now(),input:input.substring(0,45),output,mode:sessMode,title:null,time:new Date().toISOString()});
+    if(hist.length>50)hist=hist.slice(0,50);
+    localStorage.setItem(key,JSON.stringify(hist));
+    loadHistory();
+  }
+}
+
+async function loadHistory(){
+  const user=getCurrentUser();if(!user)return;
+  let hist=[];
+  try{
+    const {collection,getDocs}=window._fbFns;
+    const snap=await getDocs(collection(window._fbDb,'users',user.uid,'history'));
+    snap.forEach(d=>hist.push(d.data()));
+    hist.sort((a,b)=>b.time.localeCompare(a.time));
+    hist=hist.slice(0,50);
+  }catch(e){
+    // Fallback localStorage
+    const key='era_hist_'+(user.uid||user.email);
+    try{hist=JSON.parse(localStorage.getItem(key)||'[]');}catch{}
+  }
+  sessHistory=hist;
+  const container=document.getElementById('sessHistItems');
+  if(!hist.length){
+    container.innerHTML='<div style="font-size:12px;color:rgba(255,255,255,0.18);padding:0.5rem;">No history yet</div>';
+    return;
+  }
+  container.innerHTML=hist.map((h,i)=>{
+    const label=(h.title||h.input||'').substring(0,36);
+    return `<div class="sess-hist-item" id="hi${i}" style="display:flex;align-items:center;gap:4px;padding-right:6px;">
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;min-width:0;" onclick="loadHistItem(${i})">${label}${(h.title||h.input||'').length>36?'...':''}</span>
+      <div class="hi-btns" style="display:none;flex-shrink:0;gap:2px;">
+        <button onclick="event.stopPropagation();renameHist(${i})" style="background:rgba(255,255,255,0.08);border:none;border-radius:4px;padding:2px 7px;cursor:pointer;color:rgba(255,255,255,0.5);font-size:11px;font-family:'Geist',sans-serif;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Rename</button>
+        <button onclick="event.stopPropagation();deleteHist(${i})" style="background:rgba(255,255,255,0.08);border:none;border-radius:4px;padding:2px 7px;cursor:pointer;color:rgba(255,255,255,0.5);font-size:11px;font-family:'Geist',sans-serif;" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Delete</button>
+      </div>
+    </div>`;
+  }).join('');
+  hist.forEach((_,i)=>{
+    const el=document.getElementById('hi'+i);
+    if(!el)return;
+    const btns=el.querySelector('.hi-btns');
+    el.addEventListener('mouseenter',()=>btns.style.display='flex');
+    el.addEventListener('mouseleave',()=>btns.style.display='none');
+  });
+}
+
+function loadHistItem(i){
+  const h=sessHistory[i];
+  newSession();
+  setTimeout(()=>{addMsg('user',h.input);addMsg('ai',h.output);},50);
+}
+
+async function deleteHist(i){
+  if(!confirm('Delete this session?'))return;
+  const user=getCurrentUser();if(!user)return;
+  const h=sessHistory[i];
+  try{
+    const {doc,deleteDoc}=window._fbFns;
+    await deleteDoc(doc(window._fbDb,'users',user.uid,'history',h.id));
+  }catch(e){
+    const key='era_hist_'+(user.uid||user.email);
+    let hist=[];try{hist=JSON.parse(localStorage.getItem(key)||'[]');}catch{}
+    hist.splice(i,1);
+    localStorage.setItem(key,JSON.stringify(hist));
+  }
+  loadHistory();
+}
+
+async function renameHist(i){
+  const user=getCurrentUser();if(!user)return;
+  const h=sessHistory[i];
+  const cur=h.title||h.input.substring(0,45);
+  const newName=prompt('Rename this session:',cur);
+  if(!newName||!newName.trim())return;
+  const trimmed=newName.trim().substring(0,60);
+  try{
+    const {doc,updateDoc}=window._fbFns;
+    await updateDoc(doc(window._fbDb,'users',user.uid,'history',h.id),{title:trimmed});
+  }catch(e){
+    const key='era_hist_'+(user.uid||user.email);
+    let hist=[];try{hist=JSON.parse(localStorage.getItem(key)||'[]');}catch{}
+    hist[i].title=trimmed;
+    localStorage.setItem(key,JSON.stringify(hist));
+  }
+  loadHistory();
+}
+
+document.getElementById('loginModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// Check if already logged in on load - keep on current page but update UI
+(function(){const u=getCurrentUser();if(u){/* just ready, don't auto-redirect */}})();
+</script>
+</body>
+</html>
