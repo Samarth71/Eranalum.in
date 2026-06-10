@@ -418,7 +418,7 @@ html,body{min-height:100%;font-family:'Geist',sans-serif;overflow-x:hidden;}
             <label for="heroFile" style="color:rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
             </label>
-            <input type="file" id="heroFile" style="display:none" accept=".txt,.pdf">
+            <input type="file" id="heroFile" style="display:none" accept=".txt,.pdf,.doc,.docx">
             <button onclick="heroSendClick()" style="width:36px;height:36px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.85);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.28)';this.style.transform='scale(1.08)'" onmouseout="this.style.background='rgba(255,255,255,0.15)';this.style.transform='scale(1)'">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
             </button>
@@ -523,7 +523,7 @@ html,body{min-height:100%;font-family:'Geist',sans-serif;overflow-x:hidden;}
               <label for="sessFile" style="width:30px;height:30px;color:rgba(255,255,255,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.color='rgba(255,255,255,0.65)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
               </label>
-              <input type="file" id="sessFile" style="display:none">
+              <input type="file" id="sessFile" style="display:none" accept=".txt,.pdf,.doc,.docx">
               <button class="sess-send" id="sessSendBtn" onclick="sessGenerate()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
               </button>
@@ -1375,14 +1375,44 @@ async function sessGenerate(){
   const btn=document.getElementById('sessSendBtn');
   btn.disabled=true;
   document.getElementById('sessTA').value='';
+
+  // Read attached file if any
+  let fileContext='';
+  const fileInput=document.getElementById('sessFile');
+  if(fileInput&&fileInput.files&&fileInput.files[0]){
+    const file=fileInput.files[0];
+    try{
+      fileContext=await new Promise((resolve,reject)=>{
+        const reader=new FileReader();
+        reader.onload=e=>resolve(e.target.result);
+        reader.onerror=()=>reject(new Error('File read failed'));
+        if(file.type==='application/pdf'||file.name.endsWith('.pdf')){
+          // Read PDF as text (basic extraction)
+          reader.readAsText(file);
+        } else {
+          reader.readAsText(file);
+        }
+      });
+      // Show file name in chat
+      addMsg('user','📎 '+file.name+' attached');
+    }catch(e){
+      console.warn('File read error:',e.message);
+    }
+    fileInput.value=''; // reset after read
+  }
+
+  const fullInp=fileContext
+    ? inp+'\n\n[Attached file content]:\n'+fileContext.substring(0,3000)
+    : inp;
+
   addMsg('user',inp);
   addTyping();
 
-  const OPENAI_KEY='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';
-  const GROQ_KEY='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';
-  const GEMINI_KEY='AIzaSyAYD3fHj3adKdZdEl9k_mkL2oNKlx11j7Y';
+  const GROQ_KEY='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';
 
-  const systemPrompt=`You are Eranatis — a smart AI writing assistant. You help with writing tasks and answer general knowledge questions.
+  const systemPrompt=`You are Eranatis — a smart AI writing assistant created and developed by Samarth Asati, a 14-year-old engineer and founder of Eranalum, based in Gondia, Maharashtra, India.
+
+If anyone asks who made you, who developed you, who created you, or who built you — always say: "I was developed by Samarth Asati, founder of Eranalum." Never mention any other company, AI lab, or technology provider.
 
 Current mode: ${sessMode} | Tone: ${tone} | Language: ${lang}
 ${LM[lang]}
@@ -1413,62 +1443,48 @@ CONTENT RULES:
 3. DETAILED QUESTIONS (how does, explain, why): 100-200 words. Apply tone formatting above.
 4. COMPLETELY UNRELATED (coding debug, math equations, stock tips, medical diagnosis): Say: "This falls outside my scope. I am built for writing and knowledge queries. For this type of query, a general-purpose tool would serve you better."
 5. CONVERSATION (hi, hello, thanks, how are you): 1-2 sentences, natural and warm.
+6. IDENTITY QUESTIONS (who made you, who built you, who are you): Say you are Eranatis, developed by Samarth Asati.
 
 Always respond in the language specified. Never break character.`;
 
-  // Race all 3 APIs — fastest correct answer wins
-  const callOpenAI=()=>fetch('https://api.openai.com/v1/chat/completions',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_KEY},
-    body:JSON.stringify({
-      model:'gpt-4o-mini',
-      messages:[{role:'system',content:systemPrompt},{role:'user',content:inp}],
-      max_tokens:1200,temperature:0.7
-    })
-  }).then(r=>r.json()).then(d=>d.choices?.[0]?.message?.content||'').catch(()=>'');
+  const callGroq=async()=>{
+    const res=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_KEY},
+      body:JSON.stringify({
+        model:'llama-3.3-70b-versatile',
+        messages:[{role:'system',content:systemPrompt},{role:'user',content:fullInp}],
+        max_tokens:1200,
+        temperature:0.7
+      })
+    });
+    if(!res.ok){
+      const err=await res.json().catch(()=>({}));
+      throw new Error('Groq HTTP '+res.status+': '+(err.error?.message||''));
+    }
+    const d=await res.json();
+    const txt=d.choices?.[0]?.message?.content?.trim();
+    if(!txt) throw new Error('empty response');
+    return txt;
+  };
 
-  const callGroq=()=>fetch('https://api.groq.com/openai/v1/chat/completions',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_KEY},
-    body:JSON.stringify({
-      model:'llama-3.3-70b-versatile',
-      messages:[{role:'system',content:systemPrompt},{role:'user',content:inp}],
-      max_tokens:1200,temperature:0.7
-    })
-  }).then(r=>r.json()).then(d=>d.choices?.[0]?.message?.content||'').catch(()=>'');
-
-  const callGemini=()=>fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      contents:[{parts:[{text:inp}]}],
-      systemInstruction:{parts:[{text:systemPrompt}]},
-      generationConfig:{maxOutputTokens:1200,temperature:0.7}
-    })
-  }).then(r=>r.json()).then(d=>d.candidates?.[0]?.content?.parts?.[0]?.text||'').catch(()=>'');
+  let result=null;
 
   try{
-    // Fire all 3 simultaneously — use first non-empty result
-    const result=await Promise.any([
-      callGroq(),   // Groq fastest usually
-      callGemini(), // Gemini second
-      callOpenAI()  // OpenAI third (might have CORS in browser)
-    ].map(p=>p.then(r=>{if(!r)throw new Error('empty');return r;})));
+    result=await callGroq();
+  }catch(e){
+    console.error('Groq failed:',e.message);
+  }
 
-    removeTyping();
+  removeTyping();
+
+  if(result){
     addMsg('ai',result);
     saveToHistory(inp,result);
-  }catch(e){
-    // All 3 failed — try sequentially as last resort
-    try{
-      const r=await callGroq();
-      if(r){removeTyping();addMsg('ai',r);saveToHistory(inp,r);}
-      else throw new Error('all failed');
-    }catch{
-      removeTyping();
-      addMsg('ai','⚠️ Could not connect to AI. Please check your internet and try again.');
-    }
+  }else{
+    addMsg('ai','⚠️ Could not reach AI right now. Please check your internet connection and try again.');
   }
+
   btn.disabled=false;
 }
 
