@@ -1563,6 +1563,7 @@ Always respond in the language specified. Never break character.`;
     result=await callGroq();
   }catch(e){
     console.error('Groq failed:',e.message);
+    window._lastAiError = e.message;
   }
 
   removeTyping();
@@ -1571,7 +1572,7 @@ Always respond in the language specified. Never break character.`;
     addMsg('ai',result);
     saveToHistory(inp,result);
   }else{
-    addMsg('ai','⚠️ Could not reach AI right now. Please check your internet connection and try again.');
+    addMsg('ai','⚠️ Could not reach AI right now: '+(window._lastAiError||'unknown error'));
   }
 
   btn.disabled=false;
