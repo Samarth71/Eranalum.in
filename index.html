@@ -1562,8 +1562,13 @@ Always respond in the language specified. Never break character.`;
   try{
     result=await callGroq();
   }catch(e){
-    console.error('Groq failed:',e.message);
+    console.error('Server AI failed:',e.message);
     window._lastAiError = e.message;
+    try{
+      result = await tryBrowserAI(systemPrompt, fullInp);
+    }catch(e2){
+      console.error('Browser AI failed:',e2.message);
+    }
   }
 
   removeTyping();
@@ -1576,6 +1581,23 @@ Always respond in the language specified. Never break character.`;
   }
 
   btn.disabled=false;
+}
+
+// ════ IN-BROWSER FALLBACK (runs entirely on the user's device, no server needed) ════
+async function tryBrowserAI(system, userMsg){
+  if(!window._tjsPipe){
+    addMsg('ai','⏳ Servers busy — loading a small backup AI in your browser (one-time, ~20-30s)...');
+    const { pipeline } = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3/+esm');
+    window._tjsPipe = await pipeline('text-generation','onnx-community/Qwen2.5-0.5B-Instruct',{ dtype:'q4' });
+    // remove the loading notice
+    const inner=document.getElementById('sessMessages');
+    if(inner && inner.lastElementChild) inner.lastElementChild.remove();
+  }
+  const messages=[{role:'system',content:system},{role:'user',content:userMsg}];
+  const output = await window._tjsPipe(messages,{max_new_tokens:400});
+  const txt = output[0]?.generated_text?.at(-1)?.content?.trim();
+  if(!txt) throw new Error('empty browser response');
+  return txt;
 }
 
 async function saveToHistory(input,output){
